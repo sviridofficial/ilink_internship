@@ -1,5 +1,10 @@
-.page{
-background-color:#585CC6;
+.page {
+    background-color: #585CC6;
     width: 100%;
+    background-image: url(../../Assets/backgroundImage.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 160px;
+    background-size: 100%;
 
 }
