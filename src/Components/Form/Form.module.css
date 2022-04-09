@@ -3,6 +3,25 @@
     background-color: white;
     padding: 40px 40px 20px 40px;
     width: 628px;
-    height: 436px;
+    height: 100%;
     margin: 40px auto 444px;
+}
+
+.forgotPassword {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #585CC6;
+    margin: 16px auto;
+}
+
+.forgotPassword:hover{
+    color: #797DDF;
+}
+
+.forgotPasswordBlock {
+    display: flex;
+    justify-content: center;
 }

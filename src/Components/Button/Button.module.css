@@ -1,0 +1,22 @@
+.Button {
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+
+}
+
+.Button:hover {
+    background-color: #797DDF;
+}
+
+.ButtonContainer {
+    text-align: center;
+    margin-top: 40px;
+}
