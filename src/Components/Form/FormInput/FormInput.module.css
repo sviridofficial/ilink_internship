@@ -1,0 +1,33 @@
+.formInput {
+    margin-top: 32px;
+
+}
+
+.inputHeader {
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+
+    letter-spacing: -0.0124em;
+}
+
+.input {
+    width: 100%;
+    padding: 15px 12px;
+    margin-top: 4px;
+    border: 2px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    outline: none;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.input:focus {
+    border: 2px solid #585CC6;
+}
