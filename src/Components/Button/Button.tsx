@@ -2,16 +2,14 @@ import React from "react";
 import styles from './Button.module.css';
 
 export interface ButtonProps {
-    width: number,
-    height: number
     label: string
 }
 
-const Button: React.FC<ButtonProps> = ({width, height, label}) => {
+const Button: React.FC<ButtonProps> = ({label}) => {
 
     return (
         <div className={styles.ButtonContainer}>
-            <button className={styles.Button} style={{width: `${width}px`, height: `${height}px`}}>
+            <button className={styles.Button}>
                 {label}
             </button>
         </div>

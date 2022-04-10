@@ -15,13 +15,35 @@
 
 }
 
-path:hover{
-    fill:#797DDF;
-}
-svg:hover path{
-    fill:#797DDF;
+path:hover {
+    fill: #797DDF;
 }
 
-a{
+svg:hover path {
+    fill: #797DDF;
+}
+
+a {
     margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .Footer {
+        padding: 12px 24px 18px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .companyDescription {
+        font-family: "Factor A";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 20px;
+        color: #333333;
+    }
+
+    .icons {
+        margin-top: 14px;
+    }
 }

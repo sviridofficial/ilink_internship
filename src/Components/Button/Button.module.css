@@ -9,6 +9,8 @@
     font-size: 18px;
     line-height: 18px;
     letter-spacing: 0.01em;
+    width: 108px;
+    height: 52px;
 
 }
 
@@ -19,4 +21,11 @@
 .ButtonContainer {
     text-align: center;
     margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .Button{
+        width: 256px;
+        height: 42px;
+    }
 }

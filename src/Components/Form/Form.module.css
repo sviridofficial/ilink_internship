@@ -14,7 +14,7 @@
     font-size: 12px;
     line-height: 16px;
     color: #585CC6;
-    margin: 16px auto;
+    margin: 16px auto 0px auto;
 }
 
 .forgotPassword:hover{
@@ -24,4 +24,12 @@
 .forgotPasswordBlock {
     display: flex;
     justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .Form{
+        width: 256px;
+        padding: 16px;
+        margin:40px auto 200px;
+    }
 }

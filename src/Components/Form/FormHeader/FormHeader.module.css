@@ -6,3 +6,9 @@
     line-height: 32px;
     font-family: Factor A;
 }
+
+@media (max-width: 768px) {
+    .headerText{
+        font-size: 24px;
+    }
+}

@@ -11,7 +11,7 @@ const Form: React.FC = () => {
             <FormHeader headerText={"Войти"}/>
             <FormInput inputLabel={"Логин"} placeholder={"Введите логин"}/>
             <FormInput inputLabel={"Пароль"} placeholder={"Введите пароль"}/>
-            <Button width={108} height={52} label={"Войти"}/>
+            <Button label={"Войти"}/>
             <div className={styles.forgotPasswordBlock}>
                 <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
             </div>

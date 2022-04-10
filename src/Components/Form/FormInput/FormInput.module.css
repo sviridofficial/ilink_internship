@@ -1,6 +1,5 @@
 .formInput {
     margin-top: 32px;
-
 }
 
 .inputHeader {
@@ -30,4 +29,10 @@
 
 .input:focus {
     border: 2px solid #585CC6;
+}
+
+@media (max-width: 768px) {
+    .formInput {
+        margin-top: 24px;
+    }
 }
