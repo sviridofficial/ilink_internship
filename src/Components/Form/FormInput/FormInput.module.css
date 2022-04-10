@@ -27,12 +27,17 @@
     line-height: 22px;
 }
 
+
 .input:focus {
     border: 2px solid #585CC6;
 }
 
 .show:hover svg path {
     stroke: #797DDF;
+}
+
+.close {
+    display: none;
 }
 
 .hide:hover svg path {
@@ -47,26 +52,27 @@
     margin-left: 18px;
 }
 
-.hide {
-    display: none;
-}
+
 
 .info {
- display: none;
+    display: none;
 }
 
 .notification {
     display: flex;
     align-items: center;
-    position: inherit;
+    position:absolute;
     justify-content: end;
     margin-top: -37px;
-    margin-right: 16px;
+    right: 56px;
 }
 
 
 @media (max-width: 768px) {
     .formInput {
         margin-top: 24px;
+    }
+    .notification{
+        right: 28px;
     }
 }

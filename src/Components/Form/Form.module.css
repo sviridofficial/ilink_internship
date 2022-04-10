@@ -2,6 +2,7 @@
     min-height: calc(100vh - 64px);
 }
 .Form {
+    position: relative;
     border-radius: 2px;
     background-color: white;
     padding: 40px 40px 20px 40px;
