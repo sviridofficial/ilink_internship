@@ -3,19 +3,39 @@ import styles from './Form.module.css';
 import FormHeader from "./FormHeader/FormHeader";
 import FormInput from "./FormInput/FormInput";
 import Button from "../Button/Button";
+import {useEvent, useStore} from "effector-react";
+import {$login, $password, changeLogin, changePassword} from "../../State/authStore";
 
 
 const Form: React.FC = () => {
+    const login = useStore($login);
+    const password = useStore($password);
+    const changeUsername = (value: string): void => {
+        changeLogin(value);
+    }
+    const changePass = (value: string): void => {
+        changePassword(value);
+    }
+
+    const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+        alert(login + " " + password);
+        event.preventDefault()
+    }
+
     return (
         <div className={styles.FormContainer}>
             <div className={styles.Form}>
                 <FormHeader headerText={"Войти"}/>
-                <FormInput inputLabel={"Логин"} placeholder={"Введите логин"}/>
-                <FormInput inputLabel={"Пароль"} placeholder={"Введите пароль"}/>
-                <Button label={"Войти"}/>
-                <div className={styles.forgotPasswordBlock}>
-                    <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
-                </div>
+                <form onSubmit={handleSubmit}>
+                    <FormInput value={login} type={"text"} inputLabel={"Логин"} placeholder={"Введите логин"}
+                               changeState={changeUsername}/>
+                    <FormInput value={password} type={"password"} inputLabel={"Пароль"} placeholder={"Введите пароль"}
+                               changeState={changePass}/>
+                    <Button type={"submit"} label={"Войти"}/>
+                    <div className={styles.forgotPasswordBlock}>
+                        <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
+                    </div>
+                </form>
             </div>
         </div>
     )
