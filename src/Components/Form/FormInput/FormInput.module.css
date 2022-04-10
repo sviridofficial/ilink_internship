@@ -14,7 +14,7 @@
 
 .input {
     width: 100%;
-    padding: 15px 12px;
+    padding: 15px 63px 15px 12px;
     margin-top: 4px;
     border: 2px solid #E0E0E0;
     box-sizing: border-box;
@@ -55,7 +55,7 @@
 
 
 .info {
-    display: none;
+display: none;
 }
 
 .notification {
@@ -74,5 +74,8 @@
     }
     .notification{
         right: 28px;
+    }
+    .info {
+        margin-left: 9px;
     }
 }
