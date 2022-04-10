@@ -6,5 +6,5 @@
     background-position: center;
     background-position-y: 160px;
     background-size: 100%;
-
+    min-height: 100%;
 }

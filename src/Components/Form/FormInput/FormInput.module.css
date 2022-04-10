@@ -31,6 +31,40 @@
     border: 2px solid #585CC6;
 }
 
+.show:hover svg path {
+    stroke: #797DDF;
+}
+
+.hide:hover svg path {
+    stroke: #797DDF;
+}
+
+.info:hover svg path {
+    stroke: #797DDF;
+}
+
+.info {
+    margin-left: 18px;
+}
+
+.hide {
+    display: none;
+}
+
+.info {
+ display: none;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    position: inherit;
+    justify-content: end;
+    margin-top: -37px;
+    margin-right: 16px;
+}
+
+
 @media (max-width: 768px) {
     .formInput {
         margin-top: 24px;

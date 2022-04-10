@@ -1,10 +1,13 @@
+.FormContainer{
+    min-height: calc(100vh - 64px);
+}
 .Form {
     border-radius: 2px;
     background-color: white;
     padding: 40px 40px 20px 40px;
     width: 628px;
     height: 100%;
-    margin: 40px auto 444px;
+    margin: 40px auto 0px;
 }
 
 .forgotPassword {
@@ -31,5 +34,8 @@
         width: 256px;
         padding: 16px;
         margin:40px auto 200px;
+    }
+    .FormContainer{
+        min-height: calc(100vh - 84px);
     }
 }
