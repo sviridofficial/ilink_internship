@@ -26,7 +26,7 @@ const Form: React.FC = () => {
     }
 
     const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-        alert(login + " " + password);
+        alert(login.loginState + " " + password.passwordState);
         event.preventDefault()
     }
 
@@ -36,10 +36,10 @@ const Form: React.FC = () => {
             <div className={styles.Form}>
                 <FormHeader headerText={"Войти"}/>
                 <form onSubmit={handleSubmit}>
-                    <FormInput showEye={false} value={login} type={"text"} inputLabel={"Логин"}
+                    <FormInput errors={login.validatorErrors} showEye={false} value={login.loginState} type={"text"} inputLabel={"Логин"}
                                placeholder={"Введите логин"}
                                changeState={changeUsername}/>
-                    <FormInput showEye={true} value={password} type={isSecretPassword} inputLabel={"Пароль"}
+                    <FormInput errors={password.validatorErrors} showEye={true} value={password.passwordState} type={isSecretPassword} inputLabel={"Пароль"}
                                placeholder={"Введите пароль"}
                                changeState={changePass}/>
                     <Button type={"submit"} label={"Войти"}/>

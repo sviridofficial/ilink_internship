@@ -27,6 +27,20 @@
     line-height: 22px;
 }
 
+.inputError {
+    width: 100%;
+    padding: 15px 63px 15px 12px;
+    margin-top: 4px;
+    border: 2px solid #EB5757;
+    box-sizing: border-box;
+    border-radius: 2px;
+    outline: none;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
 
 .input:focus {
     border: 2px solid #585CC6;
@@ -45,7 +59,7 @@
 }
 
 .info:hover svg path {
-    stroke: #797DDF;
+    stroke: #FB8F8F;
 }
 
 .info {
@@ -54,17 +68,33 @@
 
 
 
-.info {
-display: none;
-}
 
 .notification {
     display: flex;
     align-items: center;
-    position:absolute;
+    position: absolute;
     justify-content: end;
     margin-top: -37px;
     right: 56px;
+}
+.errorsModal {
+    display: none;
+    position: absolute;
+    background: #F5F5F5;
+    border-radius: 2px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #333333;
+    width: 160px;
+    padding: 8px;
+    right: -10px;
+    margin-top: -80px;
+}
+.info:hover ~ .errorsModal{
+    display: inline;
 }
 
 
@@ -72,10 +102,17 @@ display: none;
     .formInput {
         margin-top: 24px;
     }
-    .notification{
+
+    .notification {
         right: 28px;
     }
+
     .info {
         margin-left: 9px;
     }
+    .errorsModal{
+        right: -10px;
+    }
 }
+
+

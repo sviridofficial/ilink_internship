@@ -11,17 +11,19 @@ export interface FormInputProps {
     placeholder: string,
     type: string,
     value: string,
-    showEye: boolean
+    showEye: boolean,
+    errors: string[]
 
     changeState(event: string): void
 }
 
-const FormInput: React.FC<FormInputProps> = ({inputLabel, placeholder, type, value, changeState, showEye}) => {
+const FormInput: React.FC<FormInputProps> = ({inputLabel, placeholder, type, value, changeState, showEye, errors}) => {
 
     return (
         <div className={styles.formInput}>
             <p className={styles.inputHeader}>{inputLabel}</p>
-            <input value={value} type={type} className={styles.input} placeholder={placeholder}
+            <input value={value} type={type} className={errors.length != 0 ? styles.inputError : styles.input}
+                   placeholder={placeholder}
                    onChange={(e) => changeState(e.target.value)}/>
             <div className={styles.notification}>
 
@@ -31,8 +33,12 @@ const FormInput: React.FC<FormInputProps> = ({inputLabel, placeholder, type, val
                 <div className={type === "text" && showEye ? styles.hide : styles.close} onClick={() => {
                     changeSecurityPassword()
                 }}><Hide/></div>
-                <div className={styles.info}><Info/></div>
+                <div className={errors.length != 0 ? styles.info : styles.close}><Info/></div>
+                <div className={styles.errorsModal}>
+                    {errors.map(e => <h1>{e}</h1>)}
+                </div>
             </div>
+
         </div>
     )
 }
