@@ -7,11 +7,11 @@
     background-position: center;
     background-position-y: 160px;
     background-size: 100%;
-    min-height:calc(100vh + 64px);
+    min-height:calc(100vh);
 }
 
 @media (max-width: 768px) {
     .page{
-        min-height:calc(100vh + 24px);
+        min-height:calc(100vh);
     }
 }
