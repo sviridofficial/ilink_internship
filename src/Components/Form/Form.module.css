@@ -1,6 +1,7 @@
-.FormContainer{
+.FormContainer {
     min-height: calc(100vh - 64px);
 }
+
 .Form {
     position: relative;
     border-radius: 2px;
@@ -21,7 +22,7 @@
     margin: 16px auto 0px auto;
 }
 
-.forgotPassword:hover{
+.forgotPassword:hover {
     color: #797DDF;
 }
 
@@ -30,13 +31,16 @@
     justify-content: center;
 }
 
+
+
 @media (max-width: 768px) {
-    .Form{
+    .Form {
         width: 256px;
         padding: 16px;
-        margin:40px auto 200px;
+        margin: 40px auto 200px;
     }
-    .FormContainer{
+
+    .FormContainer {
         min-height: calc(100vh - 84px);
     }
 }

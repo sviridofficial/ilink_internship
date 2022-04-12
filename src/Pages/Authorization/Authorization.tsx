@@ -4,6 +4,7 @@ import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import FormHeader from "../../Components/Form/FormHeader/FormHeader";
 import Form from "../../Components/Form/Form";
+import UserNotExist from "../../Components/UserNotExist/UserNotExist";
 
 const Authorization: React.FC = () => {
 
@@ -11,6 +12,7 @@ const Authorization: React.FC = () => {
         <div className={style.page}>
             <Header/>
             <Form/>
+            <UserNotExist/>
             <Footer/>
         </div>
     );
