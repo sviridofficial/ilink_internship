@@ -14,18 +14,70 @@
 
 }
 
-.Button:hover {
+.BigButton {
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    width: 185px;
+    height: 52px;
+
+}
+
+.BigButton:hover {
     background-color: #797DDF;
 }
 
+.cancelButton {
+    border-radius: 2px;
+    background-color: white;
+    border: none;
+    color: #585CC6;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    width: 108px;
+    height: 52px;
+}
+
+.Button:hover {
+    background-color: #797DDF;
+}
 .ButtonContainer {
     text-align: center;
     margin-top: 40px;
+
+}
+.ButtonContainerCancel {
+    text-align: center;
+    margin-top: 40px;
+    border: 1px solid #585CC6;
+    border-radius: 2px;
 }
 
+
 @media (max-width: 768px) {
-    .Button{
+    .Button {
         width: 256px;
         height: 42px;
     }
+
+    .ButtonContainerCancel {
+        display: none;
+    }
+
+    .BigButton {
+        width: 256px;
+        height: 42px
+    }
+
 }

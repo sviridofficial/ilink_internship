@@ -12,6 +12,20 @@
     margin: 40px auto 0px;
 }
 
+.backButton {
+    position: absolute;
+    top: 46px;
+    left: 20px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap:10px
+}
+.buttonReset{
+    width: 185px;
+}
+
 .forgotPassword {
     font-family: 'Gilroy';
     font-style: normal;
@@ -31,6 +45,9 @@
     justify-content: center;
 }
 
+.backButton:hover path{
+    stroke: #797DDF;
+}
 
 
 @media (max-width: 768px) {
@@ -42,5 +59,13 @@
 
     .FormContainer {
         min-height: calc(100vh - 84px);
+    }
+
+    .backButton {
+        top: 20px;
+        left: -8px;
+    }
+    .buttons{
+        gap: 0px;
     }
 }

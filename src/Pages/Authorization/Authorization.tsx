@@ -5,6 +5,7 @@ import Footer from "../../Components/Footer/Footer";
 import FormHeader from "../../Components/Form/FormHeader/FormHeader";
 import Form from "../../Components/Form/Form";
 import UserNotExist from "../../Components/UserNotExist/UserNotExist";
+import {Route, Routes} from "react-router-dom";
 
 const Authorization: React.FC = () => {
 

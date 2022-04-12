@@ -16,6 +16,7 @@ import {
     changeSecurityPassword, onSubmitCheckLoginErrors, onSubmitCheckPasswordErrors, showMessage, signIn
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
+import {Link} from "react-router-dom";
 
 
 const Form: React.FC = () => {
@@ -63,10 +64,12 @@ const Form: React.FC = () => {
                                type={isSecretPassword} inputLabel={"Пароль"}
                                placeholder={"Введите пароль"}
                                changeState={changePass}/>
-                    <Button type={"submit"} label={"Войти"}/>
-                    <div className={styles.forgotPasswordBlock}>
-                        <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
-                    </div>
+                    <Button type={"submit"} label={"Войти"} size={"Small"} isCancel={false}/>
+                    <Link to={"/reset"}>
+                        <div className={styles.forgotPasswordBlock}>
+                            <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
+                        </div>
+                    </Link>
                 </form>
             </div>
         </div>
