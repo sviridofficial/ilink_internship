@@ -1,5 +1,5 @@
 .FormContainer {
-    min-height: calc(100vh - 64px);
+  padding-bottom: 120px;
 }
 
 .Form {
@@ -58,7 +58,7 @@
     }
 
     .FormContainer {
-        min-height: calc(100vh - 84px);
+        padding-bottom: 10px;
     }
 
     .backButton {

@@ -1,4 +1,5 @@
 .page {
+    position: relative;
     background-color: #585CC6;
     width: 100%;
     background-image: url(../../Assets/backgroundImage.svg);
@@ -6,5 +7,11 @@
     background-position: center;
     background-position-y: 160px;
     background-size: 100%;
-    min-height: 100%;
+    min-height:calc(100vh + 64px);
+}
+
+@media (max-width: 768px) {
+    .page{
+        min-height:calc(100vh + 24px);
+    }
 }

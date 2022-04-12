@@ -1,4 +1,8 @@
-.errorBlock{
+.errorBlock {
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    width: 100%;
     background: #EB5757;
     font-family: 'Gilroy';
     font-style: normal;
@@ -12,6 +16,12 @@
 
 }
 
-.close{
+.close {
     display: none;
+}
+
+@media (max-width: 768px) {
+    .errorBlock {
+        bottom: 86px;
+    }
 }
