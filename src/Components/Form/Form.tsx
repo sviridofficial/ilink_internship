@@ -33,21 +33,25 @@ const Form: React.FC = () => {
     }
 
     const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-        if (login.validatorErrors.length > 0 || password.validatorErrors.length > 0) {
-            showMessage(false);
-
-        } else if (fieldRequired(login.loginState) != true || fieldRequired(password.passwordState) != true) {
+        let findUser = false;
+        if (fieldRequired(login.loginState) != true || fieldRequired(password.passwordState) != true) {
             onSubmitCheckLoginErrors(login.loginState);
             onSubmitCheckPasswordErrors(password.passwordState);
             showMessage(false);
+        } else if (login.validatorErrors.length > 0 || password.validatorErrors.length > 0) {
+            showMessage(false);
+
         } else {
             for (let i = 0; i < $users.getState().length; i++) {
                 if ($users.getState()[i].login === login.loginState && $users.getState()[i].password === password.passwordState) {
+                    findUser = true
                     window.location.href = 'https://ilink-academy.vercel.app/'
+                    showMessage(false);
                     break;
                 }
             }
-            showMessage(true);
+
+            if (!findUser) showMessage(true);
         }
         event.preventDefault()
     }
