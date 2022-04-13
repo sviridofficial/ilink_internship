@@ -1,0 +1,143 @@
+.notifications {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    justify-content: start;
+    right: 40px;
+    bottom: 104px;
+    position: fixed;
+    width: 438px;
+    height: 132px;
+    background: #B5FFA2;
+    padding: 16px 23px 23px 130px;
+    border-radius: 32px;
+}
+
+.notificationsError {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    justify-content: start;
+    right: 40px;
+    color: #FFFFFF;
+    bottom: 104px;
+    position: fixed;
+    width: 438px;
+    height: 132px;
+    background: #F64B3C;
+    padding: 16px 23px 23px 130px;
+    border-radius: 32px;
+}
+
+
+.circleError {
+    position: absolute;
+    left: 5%;
+    top: -28%;
+    width: 68px;
+    height: 68px;
+    background: #C81912;
+    border-radius: 50%;
+}
+
+.cancel {
+
+}
+
+.cancelError path {
+    fill: white;
+}
+
+.circle {
+    position: absolute;
+    left: 5%;
+    top: -28%;
+    width: 68px;
+    height: 68px;
+    background: #7DED61;
+    border-radius: 50%;
+}
+
+button {
+    background: none;
+}
+
+.isOpen {
+
+}
+
+.circleInner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bubble {
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+}
+
+.bubble svg {
+    border-radius: 0 0 0 32px;
+}
+
+.close {
+    position: absolute;
+    right: 23px;
+    top: 24px;
+
+}
+
+.isClosed {
+    display: none;
+}
+
+.notificationHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.035em;
+}
+
+p {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@media (max-width: 768px) {
+    .notifications {
+        padding: 25px 15px 32px 90px;
+        width: 175px;
+        height: 132px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .notificationsError {
+        padding: 25px 15px 32px 90px;
+        width: 175px;
+        height: 132px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .title{
+        font-size: 24px;
+    }
+}

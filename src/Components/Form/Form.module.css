@@ -48,7 +48,9 @@
 .backButton:hover path{
     stroke: #797DDF;
 }
-
+.link{
+    margin: 0px;
+}
 
 @media (max-width: 768px) {
     .Form {
@@ -67,5 +69,8 @@
     }
     .buttons{
         gap: 0px;
+    }
+    .link{
+        display: none;
     }
 }

@@ -49,14 +49,21 @@
     height: 52px;
 }
 
+.cancelButton:hover {
+    color: white;
+    background-color: #585CC6;;
+}
+
 .Button:hover {
     background-color: #797DDF;
 }
+
 .ButtonContainer {
     text-align: center;
     margin-top: 40px;
 
 }
+
 .ButtonContainerCancel {
     text-align: center;
     margin-top: 40px;
