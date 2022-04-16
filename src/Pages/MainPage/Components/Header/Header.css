@@ -1,0 +1,161 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    height: 116px;
+    padding: 32px 80px;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+}
+
+.headerInfo {
+    display: flex;
+}
+
+.myName {
+    display: flex;
+    margin-left: 20px;
+    align-self: center;
+    font-family: Gilroy-Bold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.myLastName {
+    margin-left: 20px;
+    align-self: center;
+    font-family: Gilroy-Bold;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    display: none;
+}
+
+.companyLogo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+}
+
+.headerButton {
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    font-family:Gilroy-Bold;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    width: 192px;
+    height: 52px;
+
+}
+
+.headerButton2:hover {
+    background-color: #797DDF;
+}
+
+.headerButton:hover {
+    background-color: #797DDF;
+}
+
+.headerButton2 {
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    width: 52px;
+    height: 52px;
+    display: none;
+    justify-content: center;
+
+}
+
+.circle {
+    width: 17.64px;
+    height: 17.64px;
+    border-radius: 50%;
+    background-color: white;
+    margin-bottom: 3px;
+}
+
+.oval {
+    width: 26.66px;
+    height: 11.38px;
+    border-radius: 13.33px/5.69px;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .myName {
+        display: none;
+    }
+
+    .myLastName {
+        display: flex;
+    }
+
+    .headerButton {
+        display: none;
+    }
+
+    .headerButton2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .header {
+        height: 77px;
+        padding: 20px 16px 21px;
+    }
+
+    .headerPhoto {
+        width: 36px;
+        height: 36px;
+    }
+
+    .myLastName {
+        font-size: 12px;
+        line-height: 14px;
+        margin-left: 8px;
+    }
+
+    .ilink {
+        width: 59px;
+        height: 22px;
+    }
+
+    .academy {
+        width: 59px;
+        height: 9px;
+    }
+
+    .headerButton2 {
+        width: 36px;
+        height: 36px;
+    }
+
+    .circle {
+        width: 8.82px;
+        height: 8.82px;
+        border-radius: 50%;
+    }
+
+    .oval {
+        width: 13.33px;
+        height: 5.69px;
+        border-radius: 6.66px/2.85px;
+        background-color: white;
+    }
+}

@@ -1,0 +1,336 @@
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+    backdrop-filter: blur(10px);
+}
+
+.nameInput.error {
+    border-color: #EB5757;
+}
+
+textarea.error {
+    border-color: #EB5757;
+}
+
+.errorBlock {
+    display: flex;
+    margin-top: 2px;
+    align-items: center;
+}
+
+span {
+    margin-left: 4px;
+    font-size: 12px;
+    color: #EB5757;
+}
+
+.modal_content {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+    letter-spacing: -0.0124em;
+    /* Main Text #333333 */
+    font-family: 'Gilroy-Bold';
+    color: #333333;
+    padding: 24px;
+    background-color: white;
+
+    width: 676px;
+    transform: scale(0.5);
+    transition: 0.4s all;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal_content.active {
+    transform: scale(1);
+}
+
+.modal_reviews {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    /* identical to box height, or 117% */
+    letter-spacing: -0.0124em;
+
+    /* Main Text #333333 */
+
+    color: #333333;
+}
+
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.whatIsYourName {
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+
+    letter-spacing: -0.0124em;
+    margin-top: 20px;
+}
+
+
+.nameInput {
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    outline: none;
+    width: 395px;
+    height: 52px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 15px 12px;
+}
+
+input[type=text]:focus {
+    border: 1px solid #585CC6;
+}
+
+.nameInput::placeholder {
+    color: #8A8A8A;
+}
+
+
+.nameAndPhotoInputs {
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addPhoto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 28px 17px;
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.01em;
+    width: 217px;
+    height: 52px;
+    margin-left: 16px;
+}
+
+.addPhoto:hover {
+    background-color: #797DDF;
+}
+
+.everythingLike {
+    margin-top: 32px;
+    margin-bottom: 12px;
+}
+
+textarea {
+    resize: none;
+    width: 100%;
+    height: 105px;
+    padding: 12px;
+    outline: none;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    font-size: 14px;
+}
+
+textarea:focus {
+    border: 1px solid #585CC6;
+}
+
+.footerModal {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.sendButton {
+    width: 203px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    /* identical to box height, or 100% */
+    letter-spacing: 0.01em;
+
+}
+
+.sendButton:hover {
+    background-color: #797DDF;
+}
+
+.moderation {
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+    /* Grey #8A8A8A */
+    color: #8A8A8A;
+}
+
+.info {
+    margin-left: 18px;
+    margin-right: 10px;
+}
+
+.fMod {
+    display: flex;
+}
+
+.file {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    margin-top: 12px;
+    background: #F5F5F5;
+    width: 268px;
+    height: 56px;
+}
+
+.straight {
+    width: 168px;
+    height: 4px;
+    background-color: #585CC6;
+    border-radius: 4px;
+}
+
+
+#deleteImage:hover path {
+    fill: #EB5757;
+    opacity: 1;
+}
+
+.fileOutput {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .modal_content {
+        padding: 16px;
+        width: 288px;
+
+    }
+
+    .modal_reviews {
+        font-size: 20px;
+    }
+
+    .cancelImage {
+        width: 14px;
+        height: 14px;
+    }
+
+    .whatIsYourName {
+        font-size: 14px;
+    }
+
+    .nameAndPhotoInputs {
+        margin-top: 8px;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .nameInput {
+        width: 100%;
+        height: 42px;
+        padding: 10px 12px;
+    }
+
+    .addPhoto {
+        margin-top: 12px;
+        width: 149px;
+        height: 42px;
+        font-size: 14px;
+        padding: 12px;
+        margin-left: 0px;
+    }
+
+    .plus {
+        width: 9px;
+        height: 9px;
+    }
+
+    .everythingLike {
+        margin-top: 24px;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    textarea {
+        height: 105px;
+        margin-bottom: 0px;
+    }
+
+    .footerModal {
+        margin-top: 32px;
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+    }
+
+    .sendButton {
+        width: 100%;
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .info {
+        margin: 0px 10px 0px 0px;
+    }
+
+    .moderation {
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 12px;
+    }
+
+    .footerModal {
+        margin-top: 22px;
+    }
+
+    .file {
+        width: 256px;
+    }
+
+    .straight {
+        width: 160px;
+    }
+
+}

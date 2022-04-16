@@ -1,0 +1,283 @@
+.aboutMe {
+    display: flex;
+
+
+}
+
+.photo {
+    margin: 18px 0px 0px 80px;
+    min-width: 519px;
+    min-height: 383px;
+    background-image: url("photo.jpg");
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    background-size: cover;
+
+}
+
+.information {
+    width: 100%;
+    height: 383px;
+    background-color: white;
+    padding: 40px;
+    margin-right: 80px;
+    max-width: 2400px;
+    border-radius: 2px;
+}
+
+.myFullName p{
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    /* identical to box height, or 100% */
+
+
+    /* Purple #585CC6 */
+
+    color: #585CC6;
+
+}
+
+.birthday {
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: 0.01em;
+    justify-content: center;
+    /* Grey #8A8A8A */
+    display: flex;
+    align-items: center;
+
+    color: #8A8A8A;
+}
+
+.informationTop {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.informationMiddle {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    font-family: 'Gilroy-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+
+    letter-spacing: 0.01em;
+
+    color: #333333;
+
+
+}
+
+strong {
+    font-family: 'Gilroy-Bold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.01em;
+    color: #333333;
+}
+
+.city {
+    margin-right: 40px;
+}
+
+.sexBlock {
+    display: flex;
+    margin-right: 40px;
+}
+
+.sexImage {
+    margin-left: 10px;
+}
+
+.informationBottom {
+    margin-top: 18px;
+}
+
+.aboutMeText {
+    font-family: 'Gilroy-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    /* or 133% */
+
+    letter-spacing: 0.01em;
+
+    color: #333333;
+}
+
+.homePet {
+    display: flex;
+    margin-top: 36px;
+    font-family: 'Gilroy-Regular';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    /* or 133% */
+
+    letter-spacing: 0.01em;
+
+    color: #333333;
+
+}
+
+.petLogo {
+    margin-right: 12px;
+}
+
+@media (max-width: 1200px) {
+    .photo {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    .photo {
+        min-width: 240px;
+    }
+
+    .myFullName p{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+
+    }
+
+    .birthday {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height, or 138% */
+
+        letter-spacing: 0.01em;
+    }
+
+    strong {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height, or 138% */
+
+        letter-spacing: 0.01em;
+    }
+
+    .informationMiddle {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height, or 138% */
+
+        letter-spacing: 0.01em;
+    }
+
+    .aboutMeText {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height, or 138% */
+
+        letter-spacing: 0.01em;
+    }
+
+    .information {
+        padding: 16px;
+    }
+
+    .petText {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        /* identical to box height, or 138% */
+
+        letter-spacing: 0.01em;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo {
+        min-height: 400px;
+    }
+
+    .aboutMe {
+        display: block;
+
+    }
+
+    .information {
+        width: auto;
+        margin-top: -16px;
+        margin-left: 80px;
+        margin-right: 80px;
+        height: auto;
+    }
+
+
+}
+
+@media (max-width: 560px) {
+    .information {
+        width: auto;
+        margin-top: -16px;
+        margin-left: 16px;
+        margin-right: 16px;
+        height: auto;
+    }
+
+    .photo {
+        min-height: 200px;
+        margin: 16px 0px 0px 16px;
+        background-position: center;
+    }
+
+    .informationTop {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .informationMiddle {
+        margin-top: 16px;
+    }
+
+    .sexBlock {
+        margin-right: 28px;
+    }
+
+    .city {
+        margin-right: 28px;
+    }
+
+    .informationBottom {
+        margin-top: 16px;
+    }
+
+    .homePet {
+        margin-top: 16px;
+    }
+
+    .petLogo {
+        width: 24px;
+        height: 16px;
+    }
+}

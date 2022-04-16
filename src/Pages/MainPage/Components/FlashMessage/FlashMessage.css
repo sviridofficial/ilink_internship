@@ -1,0 +1,101 @@
+.flashMessage {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    justify-content: space-between;
+    right: 40px;
+    bottom: 40px;
+    position: fixed;
+    width: 438px;
+    height: 132px;
+    background: #B5FFA2;
+    border-radius: 32px;
+    padding: 16px 23px 23px 130px;
+    background-image: url("sucssess.svg");
+    background-repeat: no-repeat;
+    background-position-x: -11px;
+    background-position-y: 60.6px;
+}
+
+.notactive {
+    opacity: 0;
+}
+
+.flashMessageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Factor A TRIAL';
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.035em;
+    font-weight: 500;
+}
+
+.flashMessageDescription {
+    width: 244px;
+    height: 44px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    /* or 157% */
+    color: #333333;
+    font-family: 'Gilroy';
+}
+
+.circleMessage {
+    display: block;
+    position: absolute;
+    left: 10%;
+    top: -30%;
+}
+
+.tick {
+    display: block;
+    position: absolute;
+    left: 14.5%;
+    top: -13%;
+}
+
+.shape {
+    position: absolute;
+    left: 11.31px;
+    bottom: 56.41px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #7DED61;
+}
+
+.shapeSmall {
+    position: absolute;
+    background: #7DED61;
+    width: 7px;
+    height: 7px;
+    left: 76px;
+    bottom: 23px;
+    border-radius: 50%;
+
+}
+
+@media (max-width: 560px) {
+    .flashMessage {
+        padding: 25px 15px 32px 90px;
+        width: 288px;
+        height: 132px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .flashMessageHeader {
+        font-size: 24px;
+    }
+
+    .tick {
+        left: 17%;
+    }
+    .flashMessageDescription{
+        width: 176px;
+    }
+}
