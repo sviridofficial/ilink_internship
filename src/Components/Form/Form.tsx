@@ -13,7 +13,7 @@ import {
     $password, $users,
     changeLogin,
     changePassword,
-    changeSecurityPassword, onSubmitCheckLoginErrors, onSubmitCheckPasswordErrors, showMessage, signIn
+    changeSecurityPassword, clearLogin, onSubmitCheckLoginErrors, onSubmitCheckPasswordErrors, showMessage, signIn
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
 import {Link} from "react-router-dom";
@@ -55,6 +55,9 @@ const Form: React.FC = () => {
         }
         event.preventDefault()
     }
+    const clear = (): void => {
+        clearLogin();
+    }
     return (
         <div className={styles.FormContainer}>
             <div className={styles.Form}>
@@ -69,9 +72,9 @@ const Form: React.FC = () => {
                                placeholder={"Введите пароль"}
                                changeState={changePass}/>
                     <Button type={"submit"} label={"Войти"} size={"Small"} isCancel={false}/>
-                    <Link to={"/reset"}>
+                    <Link onClick={clear} to={"/reset"}>
                         <div className={styles.forgotPasswordBlock}>
-                            <a className={styles.forgotPassword} href={'/'}>Забыли пароль?</a>
+                            <a className={styles.forgotPassword}>Забыли пароль?</a>
                         </div>
                     </Link>
                 </form>

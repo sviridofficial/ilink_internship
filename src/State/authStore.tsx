@@ -51,6 +51,7 @@ export const $isSecretPassword = createStore("password");
 
 export const showMessage = createEvent<boolean>();
 export const changeLogin = createEvent<string>();
+export const clearLogin = createEvent();
 export const changePassword = createEvent<string>();
 export const changeSecurityPassword = createEvent();
 export const onSubmitCheckLoginErrors = createEvent<string>();
@@ -89,6 +90,10 @@ $login.on(changeLogin, (_, login) => {
     }
     console.log(errors);
     return {loginState: login, validatorErrors: errors};
+});
+
+$login.on(clearLogin, (_) => {
+    return {..._, loginState: "", validatorErrors: []}
 });
 
 $password.on(changePassword, (_, password) => {
