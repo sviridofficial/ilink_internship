@@ -42,6 +42,9 @@
     font-size: 14px;
     line-height: 22px;
 }
+.inputError:focus{
+    border: 2px solid #EB5757;
+}
 
 .input:focus {
     border: 2px solid #585CC6;

@@ -129,7 +129,7 @@
     line-height: 22px;
     /* or 157% */
 
-    font-family: 'Gilroy-Bold';
+    font-family: Gilroy;
     /* Main Text #333333 */
     word-break: break-all;
     color: #333333;
@@ -170,7 +170,9 @@
     margin-right: 80px;
 }
 
-
+textarea{
+    font-family: Gilroy;
+}
 .reviewConteiner {
     margin-right: -24px;
 }
@@ -251,6 +253,7 @@
         line-height: 20px;
         margin-top: 12px;
     }
+
 
     .userPhoto {
         width: 40px;

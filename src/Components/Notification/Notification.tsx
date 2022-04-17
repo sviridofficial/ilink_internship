@@ -10,7 +10,8 @@ import {notificationClose} from "../../State/notifacationStore";
 
 interface INotification {
     type: string
-    state: boolean
+    state: boolean,
+
 
 }
 
@@ -21,25 +22,29 @@ const Notification: React.FC<INotification> = ({type, state}) => {
 
     return (
         <div className={state ? styles.isOpen : styles.isClosed}>
-            <div className={type === "error" ? styles.notificationsError : styles.notifications}>
-                <div className={type === "error" ? styles.circleError : styles.circle}>
+            <div
+                className={type === "error" || type === "errorReview" ? styles.notificationsError : styles.notifications}>
+                <div className={type === "error" || type === "errorReview"? styles.circleError : styles.circle}>
                     <div className={styles.circleInner}>
-                        {type === "success" ? <Check/> : <Cross/>}
+                        {type === "success" || type === "successReview" ? <Check/> : <Cross/>}
                     </div>
                 </div>
                 <div className={styles.bubble}>
-                    {type === "success" ? <GreenBubble/> : <RedBubble/>}
+                    {type === "success" || type === "successReview" ? <GreenBubble/> : <RedBubble/>}
                 </div>
                 <div className={styles.notificationHeader}>
                     <div className={styles.title}>
-                        {type == "success" ? "Код отправлен" : "Что-то не так..."}
+                        {type == "success" ? "Код отправлен" : type == "successReview" ? "Успешно!" : "Что-то не так..."}
                     </div>
-                    <Close className={type === "success" ? styles.cancel : styles.cancelError}
-                           onClick={closeNotification}/>
+                    <Close
+                        className={type === "success" || type === "successReview" ? styles.cancel : styles.cancelError}
+                        onClick={closeNotification}/>
                 </div>
                 <div className={styles.message}>
                     {type === "success" ? <p>Код успешно отправлен на вашу
-                        почту!</p> : <p>Не получилось отправить код. Попробуйте еще раз!</p>}
+                        почту!</p> : type === "successReview" ? <p>Спасибо за отзыв о нашей компании :)</p> :
+                        type === "errorReview" ? <p>Не получилось отправить отзыв. Попробуйте еще раз!</p> :
+                            <p>Не получилось отправить код. Попробуйте еще раз!</p>}
                 </div>
 
             </div>

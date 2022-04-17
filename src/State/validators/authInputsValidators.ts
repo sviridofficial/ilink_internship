@@ -16,3 +16,12 @@ export const passwordValidation = (value: string): string | boolean => {
     if (value.match(regexp)) return true;
     return "Поле должно соответствовать условиям пароля";
 }
+
+export const maxLength20 = (value: string) => {
+    if (value.length > 20) return "Длина больше 20 символов";
+    return true;
+}
+export const maxLength200 = (value: string) => {
+    if (value.length > 200) return "Длина больше 200 символов";
+    return true;
+}

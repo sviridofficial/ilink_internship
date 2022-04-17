@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../Form/Form.module.css"
 import FormInput from "../Form/FormInput/FormInput";
 import {useStore} from "effector-react";
-import {$login, changeLogin} from "../../State/authStore";
+import {$login, changeLogin, clearLogin} from "../../State/authStore";
 import FormHeader from "../Form/FormHeader/FormHeader";
 import {ReactComponent as BackButton} from "../../Assets/back.svg";
 import {Link} from "react-router-dom";
@@ -34,7 +34,8 @@ const ResetPasswordForm: React.FC = () => {
                 <FormHeader headerText={"Сброс пароля"}/>
                 <div className={styles.backButton}>
                     <Link to={"/"} onClick={() => {
-                        notificationClose()
+                        notificationClose();
+                        clearLogin();
                     }}><BackButton/></Link>
                 </div>
                 <form onSubmit={handleSubmit}>
@@ -45,7 +46,8 @@ const ResetPasswordForm: React.FC = () => {
                     <div className={styles.buttons}>
                         <Button label={"Отправить код"} type={"submit"} size={"Big"} isCancel={false}/>
                         <Link onClick={() => {
-                            notificationClose()
+                            notificationClose();
+                            clearLogin()
                         }} className={styles.link} to={"/"}><Button label={"Отмена"}
                                                                     type={"reset"}
                                                                     size={"Small"}

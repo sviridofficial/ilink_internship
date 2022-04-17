@@ -10,10 +10,17 @@ import {
     $isSecretPassword,
     $login,
     $messageNotFound,
-    $password, $users,
+    $password,
+    $users,
     changeLogin,
     changePassword,
-    changeSecurityPassword, clearLogin, onSubmitCheckLoginErrors, onSubmitCheckPasswordErrors, showMessage, signIn
+    changeSecurityPassword,
+    clearLogin,
+    clearPassword,
+    onSubmitCheckLoginErrors,
+    onSubmitCheckPasswordErrors,
+    showMessage,
+    signIn
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
 import {Link} from "react-router-dom";
@@ -57,6 +64,7 @@ const Form: React.FC = () => {
     }
     const clear = (): void => {
         clearLogin();
+        clearPassword();
     }
     return (
         <div className={styles.FormContainer}>
