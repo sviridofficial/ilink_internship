@@ -26,7 +26,7 @@ const Modal = (props) => {
     const comment = useStore($reviewInputComment);
     const notification = useStore($notificationIsOpen);
     const onSubmit = (event) => {
-        if (name.validatorErrors.length != 0 || comment.validatorErrors.length != 0) {
+        if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0)||name.name.length==0||comment.comment.length==0) {
             setNotificationType("errorReview")
             notificationOpen();
         } else {
