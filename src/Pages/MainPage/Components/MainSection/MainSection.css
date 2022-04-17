@@ -1,11 +1,5 @@
 .section {
-    background-color: #585CC6;
-    background-image: url(spiral.svg);
-    background-repeat: no-repeat;
-    background-position: top right;
-    width: 100%;
-    height: 100%;
-    padding-bottom: 106px;
+    min-height: 100vh;
 }
 
 @media (max-width: 576px) {

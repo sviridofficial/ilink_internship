@@ -1,12 +1,13 @@
 import React from "react";
 import '../Modal.css';
-import errorImage from './errorImage.svg';
 
-const CustomInput = ({input, meta, ...props}) => {
+
+const CustomInput = (props) => {
     return (
 
         <div>
-
+            <input {...props}
+                   className={"nameInput"}/>
         </div>
     )
 }

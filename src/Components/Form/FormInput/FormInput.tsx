@@ -29,11 +29,11 @@ const FormInput: React.FC<FormInputProps> = ({inputLabel, placeholder, type, val
 
                 <div className={type === "password" && showEye ? styles.show : styles.close} onClick={() => {
                     changeSecurityPassword()
-                }}><Show/></div>
+                }}><Show className={styles.showImage}/></div>
                 <div className={type === "text" && showEye ? styles.hide : styles.close} onClick={() => {
                     changeSecurityPassword()
                 }}><Hide/></div>
-                <div className={errors.length != 0 ? styles.info : styles.close}><Info/></div>
+                <div className={errors.length != 0 ? styles.info : styles.close}><Info className={styles.infoImage}/></div>
                 <div className={styles.errorsModal}>
                     {errors.map(e => <h1>{e}</h1>)}
                 </div>

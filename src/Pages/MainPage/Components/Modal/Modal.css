@@ -46,7 +46,7 @@ span {
     color: #333333;
     padding: 24px;
     background-color: white;
-
+    box-sizing: border-box;
     width: 676px;
     transform: scale(0.5);
     transition: 0.4s all;

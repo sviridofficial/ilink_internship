@@ -5,10 +5,13 @@ import left from './left.svg';
 import right from './right.svg';
 import plus from './plus.svg';
 import Modal from "../../Modal/Modal";
+import {useStore} from "effector-react";
+import {$reviews} from "../../../../../State/reviewsStore";
 
 
 const Reviews = (props) => {
     let slider = React.createRef();
+    let comments = useStore($reviews);
     const [modalActive, setModalActive] = useState(false);
     let settings = {
         dots: true,
@@ -48,6 +51,20 @@ const Reviews = (props) => {
             }
         ]
     };
+    let allComments = comments.map(c => <div>
+        <div className='reviwContainer'>
+            <div className='containerHeader'>
+                <div className="x">
+                    <div className='userPhoto'/>
+                    <p className='userName'>{c.username}</p>
+                </div>
+                <p className='postAdded'>{c.date}</p>
+            </div>
+            <div className="comment">
+                <p>{c.comment}</p>
+            </div>
+        </div>
+    </div>);
 
     return (
         <div className='reviewBlock'>
@@ -66,49 +83,7 @@ const Reviews = (props) => {
                 </div>
                 <div className='reviewConteiner'>
                     <Slider {...settings} ref={slider}>
-
-                        <div>
-                            <div className='reviwContainer'>
-                                <div className='containerHeader'>
-                                    <div className="x">
-                                        <div className='userPhoto'/>
-                                        <p className='userName'>dwd</p>
-                                    </div>
-                                    <p className='postAdded'>wdw</p>
-                                </div>
-                                <div className="comment">
-                                    <p>dwd</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className='reviwContainer'>
-                                <div className='containerHeader'>
-                                    <div className="x">
-                                        <div className='userPhoto'/>
-                                        <p className='userName'>dwd</p>
-                                    </div>
-                                    <p className='postAdded'>wdw</p>
-                                </div>
-                                <div className="comment">
-                                    <p>dwd</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className='reviwContainer'>
-                                <div className='containerHeader'>
-                                    <div className="x">
-                                        <div className='userPhoto'/>
-                                        <p className='userName'>dwd</p>
-                                    </div>
-                                    <p className='postAdded'>wdw</p>
-                                </div>
-                                <div className="comment">
-                                    <p>dwd</p>
-                                </div>
-                            </div>
-                        </div>
+                        {allComments}
                     </Slider>
                 </div>
             </div>

@@ -45,7 +45,7 @@ const Form: React.FC = () => {
             for (let i = 0; i < $users.getState().length; i++) {
                 if ($users.getState()[i].login === login.loginState && $users.getState()[i].password === password.passwordState) {
                     findUser = true
-                    window.location.href = 'https://ilink-academy.vercel.app/'
+                    window.location.href = '/main'
                     showMessage(false);
                     break;
                 }

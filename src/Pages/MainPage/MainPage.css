@@ -8,6 +8,11 @@
     padding-bottom: 106px;
 }
 
+.mainPage {
+    position: relative;
+    min-height:calc(100vh);
+}
+
 @media (max-width: 576px) {
     .section {
         background-position: -10% 0%;
