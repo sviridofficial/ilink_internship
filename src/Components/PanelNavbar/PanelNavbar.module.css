@@ -1,0 +1,105 @@
+.navbar {
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #8A8A8A;
+    line-height: 20px;
+    padding: 59px 80px 0px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.navbarItem {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.members {
+    background-image: url("../../Assets/members.svg");
+    width: 20px;
+    height: 20px;
+}
+
+.paper {
+    background-image: url("../../Assets/Paper.svg");
+    width: 20px;
+    height: 20px;
+}
+
+.chat {
+    background-image: url("../../Assets/chat.svg");
+    width: 20px;
+    height: 20px;
+}
+
+.link {
+    margin: 0;
+    text-decoration: none;
+    color: #8A8A8A;
+
+}
+
+.link:hover {
+    color: #797DDF;
+}
+
+.link:hover .paper {
+    background-image: url("../../Assets/PaperHover.svg");
+}
+
+.link:hover .chat {
+    background-image: url("../../Assets/chatHover.svg");
+}
+
+.link:hover .members {
+    background-image: url("../../Assets/membersHover.svg");
+}
+
+.active {
+    color: #585CC6;
+}
+
+
+.active .paper {
+    background-image: url("../../Assets/PaperActive.svg");
+}
+
+.active .chat {
+    background-image: url("../../Assets/ChatActive.svg");
+}
+
+.active .members {
+    background-image: url("../../Assets/membersActive.svg");
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        border-bottom: 1px solid #E0E0E0;
+        padding: 24px 16px 0px 16px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .paper {
+        display: none;
+    }
+
+    .chat {
+        display: none;
+    }
+
+    .members {
+        display: none;
+    }
+
+    .active {
+        overflow: hidden;
+        border-bottom: 4px solid #585CC6;
+    }
+    .text{
+        padding-bottom: 8px;
+    }
+}
