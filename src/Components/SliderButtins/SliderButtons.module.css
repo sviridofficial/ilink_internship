@@ -1,0 +1,26 @@
+.buttons {
+    display: none;
+}
+
+.activeButton {
+    width: 9px;
+    height: 9px;
+    border: none;
+    background-color: #585CC6;
+    border-radius: 2px;
+}
+
+.noActiveButton {
+    width: 9px;
+    height: 9px;
+    border: none;
+    background-color: #E0E0E0;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .buttons{
+        display: flex;
+        gap: 10px;
+    }
+}

@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useRef} from "react";
 import "./Table.css";
 import Status from "../Status/Status";
 
 
 const Table = () => {
-    return <div className={"tableBlock"}>
-
+    return <div  className={"tableBlock"}>
         <table id="customers">
             <tr>
                 <th className={"firstTh"}>ИФ УЧЕНИКА</th>
