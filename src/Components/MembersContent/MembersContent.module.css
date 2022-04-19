@@ -1,0 +1,17 @@
+.membersContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 70px;
+}
+
+@media (max-width: 768px) {
+    .emptyMembersLogo{
+        width: 240px;
+        height: 226px;
+    }
+    .membersContent{
+        min-height: calc(100vh - 234px);
+        padding-bottom: 80px;
+    }
+}

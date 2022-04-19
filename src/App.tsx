@@ -3,7 +3,7 @@ import Authorization from "./Pages/Authorization/Authorization";
 import {Route, Routes} from "react-router-dom";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import MainPage from "./Pages/MainPage/MainPage";
-import Members from "./Pages/ControlPanel/ControlPanel";
+import Members from "./Pages/Members/Members";
 import Reviews from "./Pages/Reviews/Reviews";
 import AboutMe from "./Pages/AboutMe/AboutMe";
 

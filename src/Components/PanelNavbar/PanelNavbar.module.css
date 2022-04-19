@@ -5,10 +5,11 @@
     font-size: 16px;
     color: #8A8A8A;
     line-height: 20px;
-    padding: 59px 80px 0px 80px;
+    padding: 59px 0px 0px 80px;
     display: flex;
     flex-direction: column;
     gap: 40px;
+    border-right: 1px solid #E0E0E0;
 }
 
 .navbarItem {
@@ -60,6 +61,7 @@
 
 .active {
     color: #585CC6;
+    border-right: 4px solid #585CC6;
 }
 
 
@@ -97,6 +99,7 @@
 
     .active {
         overflow: hidden;
+        border-right: none;
         border-bottom: 4px solid #585CC6;
     }
     .text{
