@@ -83,6 +83,8 @@
         padding: 24px 16px 0px 16px;
         flex-direction: row;
         justify-content: space-between;
+        max-height: 30px;
+        box-sizing: inherit;
     }
 
     .paper {
@@ -98,7 +100,6 @@
     }
 
     .active {
-        overflow: hidden;
         border-right: none;
         border-bottom: 4px solid #585CC6;
     }

@@ -1,0 +1,116 @@
+.tableBlock {
+    width: auto;
+    padding: 39px 80px 10px 48px;
+}
+
+#customers {
+    table-layout: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+
+}
+
+.userNameTable {
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #464E5F;
+}
+
+#customers td, #customers th {
+    font-family: Gilroy;
+    font-size: 14px;
+    border-bottom: 1px dashed #E0E0E0;
+    vertical-align: middle;
+    padding-left: 16px;
+}
+
+#customers td {
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+    overflow: hidden;
+}
+
+.tableUserPhoto {
+    background-color: gray;
+    width: 40px;
+    height: 40px;
+    margin-right: 12px;
+}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+.userBlock {
+    display: flex;
+    align-items: center;
+
+}
+
+#customers th {
+
+    border: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background: #F5F5F5;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #464E5F;
+    min-width: 300px;
+}
+
+.firstTh {
+    border-radius: 6px 0px 0px 6px;
+}
+
+.lastTh {
+    border-radius: 0px 6px 6px 0px;
+}
+
+@media (max-width: 960px) {
+
+    .tableUserPhoto {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+    .tableBlock {
+        width: 100%;
+        overflow-x: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        padding: 20px 0px;
+    }
+
+    #customers {
+        width: auto;
+
+    }
+
+    #customers td {
+
+        padding-top: 24px;
+        padding-bottom: 24px;
+        padding-left: 16px;
+    }
+
+    #customers th {
+        min-width: 209px;
+        padding-left: 16px;
+    }
+}

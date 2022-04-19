@@ -1,17 +1,35 @@
-.membersContent{
+.membersContent {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 70px;
+
+}
+
+.membersBlock {
+    display: flex;
+    justify-content: space-between;
+    padding: 59px 80px 0px 48px;
+}
+.membersHeaderText{
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
 }
 
 @media (max-width: 768px) {
-    .emptyMembersLogo{
+    .emptyMembersLogo {
         width: 240px;
         height: 226px;
     }
-    .membersContent{
+
+    .membersContent {
         min-height: calc(100vh - 234px);
         padding-bottom: 80px;
+        overflow: hidden;
+    }
+    .membersBlock{
+        padding: 24px 0px 0px 16px;
     }
 }

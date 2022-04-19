@@ -14,7 +14,7 @@ const Members: React.FC = () => {
                 <PanelNavbar/>
                 <MembersContent/>
             </div>
-<Footer/>
+            <Footer/>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import './Header.css';
 import logo from './headerPhoto.png';
 import vector from './Vector.svg'
 import academy from './ACADEMY.svg';
+import {Link} from "react-router-dom";
 
 const Header = (props) => {
     return (
@@ -18,11 +19,15 @@ const Header = (props) => {
                 <img src={academy} className='academy' width='85.43' height='12.38'/>
 
             </div>
-            <button className='headerButton'>Панель управления</button>
-            <button className='headerButton2'>
-                <div className='circle'></div>
-                <div className='oval'></div>
-            </button>
+            <Link to={"/members"}>
+                <button className='headerButton'>Панель управления</button>
+            </Link>
+            <Link to={"/members"} className={"hiddenButton"}>
+                <button className='headerButton2'>
+                    <div className='circle'></div>
+                    <div className='oval'></div>
+                </button>
+            </Link>
         </div>
     )
 }

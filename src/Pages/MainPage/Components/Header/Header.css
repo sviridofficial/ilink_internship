@@ -57,6 +57,9 @@
     height: 52px;
 
 }
+.hiddenButton{
+    display: none;
+}
 
 .headerButton2:hover {
     background-color: #797DDF;
@@ -110,6 +113,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    .hiddenButton{
+        display: flex;
     }
 
 }

@@ -3,6 +3,7 @@ import styles from "./ControlPanelHeader.module.css";
 import userPhoto from "../../Pages/MainPage/Components/Header/headerPhoto.png";
 import ilink from "../../Assets/ilink.svg";
 import academy from "../../Assets/academy.svg";
+import {NavLink} from "react-router-dom";
 
 const ControlPanelHeader: React.FC = () => {
     return (
@@ -15,10 +16,16 @@ const ControlPanelHeader: React.FC = () => {
                 <p className={styles.headerText}>Панель управления</p>
             </div>
 
-            <div className={styles.logoBlock}>
-                <img className={styles.ilink} src={ilink}/>
-                <img className={styles.academy} src={academy}/>
+
+            <div>
+                <NavLink to={"/main"} className={styles.link}>
+                    <div className={styles.logoBlock}>
+                        <img className={styles.ilink} src={ilink}/>
+                        <img className={styles.academy} src={academy}/>
+                    </div>
+                </NavLink>
             </div>
+
         </header>
     )
 }

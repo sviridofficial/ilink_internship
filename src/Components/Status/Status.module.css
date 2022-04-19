@@ -1,0 +1,58 @@
+.status {
+    max-width:138px;
+    text-align: center;
+    background: #FDEEEE;
+    border-radius: 2px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #EB5757;
+    padding: 8px 0px;
+}
+
+.start {
+    max-width:138px;
+    text-align: center;
+    background: #F0F9ED;
+    border-radius: 2px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #61BF4A;
+    padding: 8px 0px;
+}
+
+.end {
+    max-width:138px;
+    text-align: center;
+    background: #F5F5F5;
+    border-radius: 2px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8A8A8A;
+    padding: 8px 0px;
+}
+
+@media (max-width: 768px) {
+    .status {
+        width:89px;
+        padding: 8px;
+    }
+
+    .end {
+        width:89px;
+        padding: 8px;
+    }
+
+    .start {
+        width:89px;
+        padding: 8px;
+    }
+}

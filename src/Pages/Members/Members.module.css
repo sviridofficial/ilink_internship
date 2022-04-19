@@ -13,10 +13,11 @@
 .page {
     position: relative;
     min-height: calc(100vh);
+
 }
 
 @media (max-width: 768px) {
     .grid{
-        grid-template-columns: 1fr;
+        display: block;
     }
 }

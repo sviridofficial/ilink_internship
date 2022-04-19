@@ -46,10 +46,15 @@
 }
 
 .logoBlock {
+
     display: flex;
     height: 40px;
     flex-direction: column;
     justify-content: start;
+}
+.link{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .ilink {
