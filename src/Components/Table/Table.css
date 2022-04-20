@@ -8,8 +8,6 @@
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
-
-
 }
 
 .userNameTable {
@@ -78,6 +76,90 @@
     border-radius: 0px 6px 6px 0px;
 }
 
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    width: 100%;
+    gap: 8px;
+}
+
+.breakClassName {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.pageClassName {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.breakLinkClassName {
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    display: block;
+    text-align: center;
+    font-family: 'Gilroy';
+}
+
+.paginationLink {
+    margin-left: 0;
+    display: block;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #212B36;
+    padding-top: 2px;
+}
+
+.activePage {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #585CC6;
+    border-radius: 4px;
+}
+
+.activePage a {
+    color: #585CC6;
+}
+
+.previousClass {
+
+    width: 32px;
+    height: 32px;
+    font-family: Gilroy;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.previousLink {
+    margin-left: 0;
+    padding-top: 5px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+
+}
+
+.disabled {
+    background: #8A8A8A;
+    opacity: 0.5;
+    border-radius: 4px;
+    color: white;
+}
+
 @media (max-width: 960px) {
 
     .tableUserPhoto {
@@ -92,7 +174,7 @@
 @media (max-width: 768px) {
     .tableBlock {
         width: 100%;
-        overflow-x: auto;
+        overflow-x: scroll;
         -ms-overflow-style: -ms-autohiding-scrollbar;
         padding: 20px 0px;
     }

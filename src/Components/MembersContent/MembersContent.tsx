@@ -26,7 +26,7 @@ const MembersContent: React.FC = () => {
                         <SliderButtons/>
                     </div>
                 </div>
-                <Table/>
+                <Table itemsPerPage={6}/>
             </div>
         )
     }

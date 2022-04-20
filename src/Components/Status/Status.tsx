@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Status.module.css";
 
-interface IStatusProps {
+export interface IStatusProps {
     value: "Обучается"|"Зачислен"|"Отчислен"
 }
 
