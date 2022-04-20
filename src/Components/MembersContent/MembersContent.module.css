@@ -2,8 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 70px;
-
 }
 
 .membersBlock {
@@ -23,6 +21,7 @@
     display: flex;
 
 }
+
 .buttons{
     display: none;
 }

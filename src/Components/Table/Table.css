@@ -9,7 +9,9 @@
     border-collapse: collapse;
     width: 100%;
 }
-
+.table{
+    position: relative;
+}
 .userNameTable {
     font-family: 'Gilroy';
     font-style: normal;
@@ -82,6 +84,7 @@
     margin-top: 50px;
     width: 100%;
     gap: 8px;
+   padding-bottom: 147px;
 }
 
 .breakClassName {
