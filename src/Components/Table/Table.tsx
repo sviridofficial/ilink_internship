@@ -36,8 +36,7 @@ const Items: React.FC<Props> = ({currentItems}) => {
 }
 
 const Table: React.FC<ITable> = ({itemsPerPage, selectedOption}) => {
-    const allStudents = useStore($students);
-
+    const allStudents = filter(useStore($students), selectedOption);
     const [currentItems, setCurrentItems] = useState(allStudents);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -47,7 +46,18 @@ const Table: React.FC<ITable> = ({itemsPerPage, selectedOption}) => {
         console.log(`Loading items from ${itemOffset} to ${endOffset}`);
         setCurrentItems(allStudents.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(allStudents.length / itemsPerPage));
+
+
     }, [itemOffset, itemsPerPage]);
+
+    useEffect(() => {
+        setItemOffset(0);
+        const endOffset = 6;
+        setCurrentItems(allStudents.slice(itemOffset, endOffset))
+        setPageCount(Math.ceil(allStudents.length / itemsPerPage));
+    }, [selectedOption])
+
+
     const handlePageClick = (event: { selected: number; }) => {
         const newOffset = (event.selected * itemsPerPage) % allStudents.length;
         console.log(
