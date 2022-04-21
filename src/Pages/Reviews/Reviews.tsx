@@ -6,6 +6,7 @@ import Footer from "../../Components/Footer/Footer";
 import ReviewContent from "../../Components/ReviewContent/ReviewContent";
 
 const Reviews: React.FC = () => {
+
     return (
         <div className={styles.page}>
             <ControlPanelHeader/>

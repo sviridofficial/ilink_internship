@@ -6,12 +6,12 @@ import right from './right.svg';
 import plus from './plus.svg';
 import Modal from "../../Modal/Modal";
 import {useStore} from "effector-react";
-import {$reviews} from "../../../../../State/reviewsStore";
+import {$reviews, filterPublishReviews} from "../../../../../State/reviewsStore";
 
 
 const Reviews = (props) => {
     let slider = React.createRef();
-    let comments = useStore($reviews);
+    let comments = filterPublishReviews(useStore($reviews));
     const [modalActive, setModalActive] = useState(false);
     let settings = {
         dots: true,

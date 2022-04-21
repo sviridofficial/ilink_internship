@@ -1,29 +1,60 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./ReviewBlock.module.css";
 import {ReactComponent as Edit} from "../../Assets/Edit.svg";
+import {publishReview, rejectReview} from "../../State/reviewsStore";
+import {ReactComponent as RejectedLogo} from "../../Assets/Close Square.svg";
+import {ReactComponent as PublishedLogo} from "../../Assets/published.svg";
+import ModalEditReview from "../ModalEditReview/ModalEditReview";
 
-const ReviewBlock: React.FC = () => {
+interface IReviewProps {
+    id: number,
+    username: string,
+    date: string,
+    comment: string,
+    type: string
+}
+
+const ReviewBlock: React.FC<IReviewProps> = ({id, username, date, comment, type}) => {
+    console.log(id);
+    const [modalActive, setModalActive] = useState(false);
+    const rejectClick = () => {
+        rejectReview(id);
+    }
+    const publishClick = () => {
+        publishReview(id);
+    }
+    const editClick = () => {
+        setModalActive(true);
+    }
     return (
-        <div className={styles.reviewBlock}>
+        <div
+            className={type === "rejected" ? styles.reviewBlockRejected : type === "published" ? styles.reviewBlockPublished : styles.reviewBlock}>
             <div className={styles.reviewHeader}>
                 <div className={styles.reviewHeaderUserInformation}>
                     <div className={styles.photo}/>
-                    <p className={styles.userName}>Буба Бубенцов</p>
+                    <p className={styles.userName}>{username}</p>
                 </div>
-                <p className={styles.date}>08.01.2022</p>
+                <p className={styles.date}>{date}</p>
             </div>
-            <p className={styles.comment}>Отличный коллектив, руководители понимают сам процесс работы каждого
-                сотрудника и помогают всем без исключения. Система KPI позволяет реально хорошо зарабатывать по простому
-                принципу - чем больше и лучше ты работаешь, тем больше денег получаешь. Соцпакет - отличная страховка
-                ДМС, организовали курсы английского языка бесплатно, оплачивают тренажерный зал. Зарплату выплачивают
-                всегда вовремя.</p>
-            <div className={styles.buttons}>
-                <div className={styles.leftButtons}>
-                    <button className={styles.submit}>Опубликовать</button>
-                    <button className={styles.refuse}>Отклонить</button>
-                </div>
-                <button className={styles.edit}><Edit/></button>
-            </div>
+            <p className={styles.comment}>{comment}</p>
+            {type === "rejected" ?
+                <div className={styles.rejected}>
+                    <RejectedLogo/>
+                    <p className={styles.rejectedText}>Отзыв отклонен</p>
+                </div> : type === "published" ?
+                    <div className={styles.published}>
+                        <PublishedLogo/>
+                        <p className={styles.publishedText}>Отзыв опубликован</p>
+                    </div>
+                    :
+                    <div className={styles.buttons}>
+                        <div className={styles.leftButtons}>
+                            <button onClick={publishClick} className={styles.submit}>Опубликовать</button>
+                            <button onClick={rejectClick} className={styles.refuse}>Отклонить</button>
+                        </div>
+                        <button onClick={editClick} className={styles.edit}><Edit/></button>
+                    </div>}
+            <ModalEditReview comment={comment} id={id} active={modalActive} setActive={setModalActive}/>
         </div>
     )
 }

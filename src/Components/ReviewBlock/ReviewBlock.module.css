@@ -1,9 +1,26 @@
 .reviewBlock {
+
     background: #F5F5F5;
     border-radius: 2px;
     padding: 24px;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 
+.reviewBlockRejected {
+    background: #FDEEEE;
+    border-radius: 2px;
+    padding: 24px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+.reviewBlockPublished{
+    background: rgba(181, 255, 162, 0.1);
+    border-radius: 2px;
+    padding: 24px;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
 .reviewHeader {
     display: flex;
     justify-content: space-between;
@@ -40,6 +57,7 @@
 }
 
 .comment {
+    max-width: 20vw;
     margin-top: 24px;
     font-family: 'Gilroy';
     font-style: normal;
@@ -69,6 +87,36 @@
     margin-right: 12px;
 }
 
+.rejected {
+    margin-top: 46px;
+    display: flex;
+    align-items: center;
+}
+
+
+.rejectedText {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #EB5757;
+    margin-left: 14px;
+}
+.published{
+    margin-top: 46px;
+    display: flex;
+    align-items: center;
+}
+.publishedText{
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #61BF4A;
+    margin-left: 14px;
+}
 .submit:hover {
     background-color: #797DDF;
 }
@@ -108,13 +156,13 @@
     .submit {
         width: 102px;
         height: 42px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .refuse {
         width: 102px;
         height: 42px;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .edit {
@@ -130,12 +178,14 @@
 
     .submit {
         width: 75px;
-        font-size: 10px;
+        font-size: 9px;
     }
+
     .refuse {
         width: 70px;
-        font-size: 10px;
+        font-size: 9px;
     }
+
     .date {
         margin-top: 12px;
     }
@@ -147,14 +197,17 @@
         line-height: 24px;
         margin-left: 8px;
     }
+
     .submit {
         width: 75px;
-        font-size: 10px;
+        font-size: 8px;
     }
+
     .refuse {
         width: 60px;
-        font-size: 10px;
+        font-size: 8px;
     }
+
     .photo {
         width: 40px;
         height: 40px;
@@ -165,8 +218,15 @@
     }
 
     .comment {
+        max-width: 45vw;
         font-size: 12px;
         line-height: 20px;
         margin-top: 12px;
+    }
+}
+
+@media (max-width: 760px) {
+    .comment {
+        max-width: 70vw;
     }
 }
