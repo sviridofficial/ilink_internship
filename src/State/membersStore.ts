@@ -13,82 +13,82 @@ export type listMembers = membersStore[];
 //Стор сделан специально таким большим для демонстрации пагинации по странице!
 export const $students = createStore<membersStore[]>([
         {
-            studentName: "1",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "2",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "3",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Закончил"
         },
         {
-            studentName: "4",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "5",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "6",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "7",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "8",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "1",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "2",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "3",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Закончил"
         },
         {
-            studentName: "4",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "5",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         },
         {
-            studentName: "6",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "7",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Отчислен"
         },
         {
-            studentName: "8",
+            studentName: "Свиридов Константин",
             studentDescription: "Студент Программной Инженерии Томского Политехнического Университета",
             studentStatus: "Обучается"
         }

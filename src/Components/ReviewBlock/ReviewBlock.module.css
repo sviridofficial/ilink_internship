@@ -1,0 +1,172 @@
+.reviewBlock {
+    background: #F5F5F5;
+    border-radius: 2px;
+    padding: 24px;
+}
+
+.reviewHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewHeaderUserInformation {
+    display: flex;
+    align-items: center;
+}
+
+.photo {
+    background-color: #585CC6;
+    width: 52px;
+    height: 52px;
+}
+
+.userName {
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    margin-left: 20px;
+    color: #333333;
+}
+
+.date {
+    color: #8A8A8A;
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.comment {
+    margin-top: 24px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333333;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.submit {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    color: white;
+    width: 179px;
+    height: 52px;
+    margin-right: 12px;
+}
+
+.submit:hover {
+    background-color: #797DDF;
+}
+
+.refuse {
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    background: #EB5757;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    width: 179px;
+    height: 52px;
+    margin-right: 12px;
+}
+
+.edit {
+    font-size: 18px;
+    border-radius: 2px;
+    background-color: #585CC6;
+    border: none;
+    width: 52px;
+    height: 52px;
+}
+
+.edit:hover {
+    background-color: #797DDF;
+}
+
+.refuse:hover {
+    background: #FF7171;
+}
+
+@media (max-width: 1400px) {
+    .submit {
+        width: 102px;
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .refuse {
+        width: 102px;
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .edit {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .reviewHeader {
+        flex-direction: column;
+    }
+
+    .submit {
+        width: 75px;
+        font-size: 10px;
+    }
+    .refuse {
+        width: 70px;
+        font-size: 10px;
+    }
+    .date {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 960px) {
+    .userName {
+        font-size: 16px;
+        line-height: 24px;
+        margin-left: 8px;
+    }
+    .submit {
+        width: 75px;
+        font-size: 10px;
+    }
+    .refuse {
+        width: 60px;
+        font-size: 10px;
+    }
+    .photo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .comment {
+        font-size: 12px;
+        line-height: 20px;
+        margin-top: 12px;
+    }
+}

@@ -1,6 +1,17 @@
-select{
+select {
     width: 163px;
     height: 52px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.studentsList{
+    width: 100%;
+    max-width: 256px;
+    height: 52px;
+    padding-bottom: 2px;
     font-family: 'Gilroy';
     font-style: normal;
     font-weight: 400;

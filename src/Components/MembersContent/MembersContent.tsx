@@ -23,7 +23,7 @@ const MembersContent: React.FC = () => {
                 <div className={styles.membersBlock}>
                     <h1 className={styles.membersHeaderText}>Участники</h1>
                     <div className={styles.dropdownBlock}>
-                        <Dropdown selected={selectedOption} setSelect={setSelectedOption}/>
+                        <Dropdown type={"Students"} selected={selectedOption} setSelect={setSelectedOption}/>
                         <SliderButtons/>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
 .membersBlock {
     display: flex;
     justify-content: space-between;
-    padding: 59px 80px 0px 48px;
+    padding: 59px 80px 0px 24px;
 }
 
 .membersHeaderText {
