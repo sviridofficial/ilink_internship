@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styles from "./ModalEditReview.module.css";
 import cancel from "../../Pages/MainPage/Components/Modal/cancel.svg";
 import CustomTextarea from "../../Pages/MainPage/Components/Modal/CustomInputField/CustomTextarea";
+import {editReview} from "../../State/reviewsStore";
 
 interface IModalEditReview {
     active: boolean,
@@ -13,6 +14,10 @@ interface IModalEditReview {
 
 const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, comment}) => {
     const [textAreaValue, setTextAreaValue] = useState(comment);
+    const submitEdit = () => {
+        editReview({id: id, comment: textAreaValue});
+        setActive(false);
+    }
     return (
         <div className={active ? styles.modal + " " + styles.active : styles.modal} onClick={() => {
             setActive(false)
@@ -28,7 +33,7 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
                                 setValue={setTextAreaValue}
                                 placeholder={'Напишите пару слов о вашем опыте...'}></CustomTextarea>
                 <div className={styles.buttons}>
-                    <button className={styles.submit}>Подтвердить редактирование</button>
+                    <button onClick={submitEdit} className={styles.submit}>Подтвердить редактирование</button>
                     <button className={styles.refuse}>Отмена</button>
                 </div>
             </div>

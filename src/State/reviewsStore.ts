@@ -6,6 +6,11 @@ interface IInputName {
     validatorErrors: string[]
 }
 
+interface IEditComment {
+    id: number,
+    comment: string
+}
+
 interface IReviewAdd {
     id: number,
     username: string,
@@ -74,6 +79,7 @@ export const changeInputComment = createEvent<string>();
 export const addReview = createEvent<IReviewAdd>();
 export const rejectReview = createEvent<number>();
 export const publishReview = createEvent<number>();
+export const editReview = createEvent<IEditComment>();
 
 $reviewInputName.on(changeInputName, (_, nameValue) => {
     const errors: any[] = [];
@@ -130,7 +136,17 @@ $reviews.on(publishReview, (_, id) => {
     return array;
 })
 
+// @ts-ignore
+$reviews.on(editReview, (_, element) => {
+    const array = [..._];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].id === element.id) {
+            array[i].comment = element.comment;
+        }
+    }
 
+    return array;
+})
 export const filterPublishReviews = (array: { date: string; comment: string; id: number; type: string; username: string }[]) => {
     return array.filter(element => element.type === "published"
     )

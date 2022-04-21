@@ -15,7 +15,6 @@ interface IReviewProps {
 }
 
 const ReviewBlock: React.FC<IReviewProps> = ({id, username, date, comment, type}) => {
-    console.log(id);
     const [modalActive, setModalActive] = useState(false);
     const rejectClick = () => {
         rejectReview(id);
