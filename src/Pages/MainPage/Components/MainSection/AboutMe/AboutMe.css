@@ -4,6 +4,16 @@
 
 }
 
+userDataBlock {
+    display: flex;
+    flex-direction: row;
+}
+.firsname{
+    float: left;
+}
+.lastname{
+    float: right;
+}
 .photo {
     margin: 18px 0px 0px 80px;
     min-width: 519px;
@@ -25,7 +35,7 @@
     border-radius: 2px;
 }
 
-.myFullName p{
+.myFullName p {
     font-family: 'Gilroy-Bold';
     font-style: normal;
     font-weight: 700;
@@ -152,7 +162,7 @@ strong {
         min-width: 240px;
     }
 
-    .myFullName p{
+    .myFullName p {
         font-style: normal;
         font-weight: 700;
         font-size: 24px;

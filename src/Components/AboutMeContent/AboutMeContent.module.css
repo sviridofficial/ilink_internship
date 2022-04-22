@@ -104,7 +104,9 @@
     width: 248px;
     height: 52px;
 }
-
+.none{
+    display: none;
+}
 .saveButton:hover {
     background-color: #797DDF;
 }

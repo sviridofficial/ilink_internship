@@ -16,6 +16,13 @@ input :focus {
     border: 1px solid #585CC6;
 }
 
+input[disabled] {
+
+    background-color: white;
+    color: #8A8A8A;
+    cursor: not-allowed;
+}
+
 .inputName {
     font-family: "Factor A";
     font-style: normal;

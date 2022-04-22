@@ -1,6 +1,6 @@
 .errorBlock {
     position: absolute;
-    bottom: 64px;
+    bottom: 84px;
     left: 0;
     width: 100%;
     background: #EB5757;
@@ -14,12 +14,6 @@
     padding-top: 20px;
     padding-bottom: 20px;
 
-}
-.none{
-    display: none;
-}
-.close {
-    display: none;
 }
 
 @media (max-width: 768px) {
