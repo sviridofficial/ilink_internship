@@ -9,7 +9,7 @@ import ModalEditReview from "../ModalEditReview/ModalEditReview";
 interface IReviewProps {
     id: number,
     username: string,
-    date: string,
+    date?: string,
     comment: string,
     type: string
 }

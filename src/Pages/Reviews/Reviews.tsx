@@ -14,6 +14,7 @@ const Reviews: React.FC = () => {
                 <PanelNavbar/>
                 <ReviewContent/>
             </div>
+            <Footer/>
         </div>
     )
 }

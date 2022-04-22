@@ -15,26 +15,12 @@ interface IReviewAdd {
     id: number,
     username: string,
     comment: string,
+    date?: string
     type: "unpublished" | "rejected" | "published"
 }
 
-interface IInputComment {
-    comment: string,
-    validatorErrors: string[]
-}
-
-const inputNameInitialState: IInputName = {
-    name: "",
-    validatorErrors: []
-}
-
-const inputCommentInitialState: IInputComment = {
-    comment: "",
-    validatorErrors: []
-}
-
-
-export const $reviews = createStore([{
+type IReviews = IReviewAdd[] | never[];
+const reviewsInitialState: IReviews = [{
     id: 1,
     username: "Константин",
     date: "15.06.22",
@@ -69,7 +55,25 @@ export const $reviews = createStore([{
         comment: "Прикольненька сайт хороший",
         type: "unpublished"
     }
-])
+];
+
+interface IInputComment {
+    comment: string,
+    validatorErrors: string[]
+}
+
+const inputNameInitialState: IInputName = {
+    name: "",
+    validatorErrors: []
+}
+
+const inputCommentInitialState: IInputComment = {
+    comment: "",
+    validatorErrors: []
+}
+
+
+export const $reviews = createStore(reviewsInitialState);
 
 export const $reviewInputName = createStore(inputNameInitialState)
 export const $reviewInputComment = createStore(inputCommentInitialState)
@@ -112,6 +116,7 @@ $reviews.on(addReview, (_, review) => {
         date: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear(),
         type: "unpublished"
     }
+    // @ts-ignore
     array.unshift(newReview);
     return array;
 })
