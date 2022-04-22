@@ -3,6 +3,8 @@ import styles from "./ModalEditReview.module.css";
 import cancel from "../../Pages/MainPage/Components/Modal/cancel.svg";
 import CustomTextarea from "../../Pages/MainPage/Components/Modal/CustomInputField/CustomTextarea";
 import {editReview} from "../../State/reviewsStore";
+import {Simulate} from "react-dom/test-utils";
+import {fieldRequired, maxLength200} from "../../State/validators/authInputsValidators";
 
 interface IModalEditReview {
     active: boolean,
@@ -15,8 +17,16 @@ interface IModalEditReview {
 const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, comment}) => {
     const [textAreaValue, setTextAreaValue] = useState(comment);
     const submitEdit = () => {
-        editReview({id: id, comment: textAreaValue});
-        setActive(false);
+        if (maxLength200(textAreaValue) != true || fieldRequired(textAreaValue) != true) {
+
+        } else {
+            editReview({id: id, comment: textAreaValue});
+            setActive(false);
+        }
+    }
+    const cancelClick = () => {
+        setTextAreaValue(comment);
+        setActive(false)
     }
     return (
         <div className={active ? styles.modal + " " + styles.active : styles.modal} onClick={() => {
@@ -26,7 +36,9 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
                  onClick={e => e.stopPropagation()}>
                 <div className="modal_header">
                     <p className="modal_reviews">Редактирование отзыва</p>
-                    <img className='cancelImage' src={cancel} onClick={() => setActive(false)}/>
+                    <img className='cancelImage' src={cancel} onClick={() => {
+                        setTextAreaValue(comment);
+                        setActive(false)}}/>
                 </div>
                 <p className={styles.reviewText}>Отзыв</p>
                 <CustomTextarea type={"editReview"} name="comment" value={textAreaValue}
@@ -34,7 +46,7 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
                                 placeholder={'Напишите пару слов о вашем опыте...'}></CustomTextarea>
                 <div className={styles.buttons}>
                     <button onClick={submitEdit} className={styles.submit}>Подтвердить редактирование</button>
-                    <button className={styles.refuse}>Отмена</button>
+                    <button onClick={cancelClick} className={styles.refuse}>Отмена</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,25 @@
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 12px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #333333;
+    border: 1px solid #E0E0E0;
+    border-radius: 2px;
+}
+
+input :focus {
+    border: 1px solid #585CC6;
+}
+
+.inputName {
+    font-family: "Factor A";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
