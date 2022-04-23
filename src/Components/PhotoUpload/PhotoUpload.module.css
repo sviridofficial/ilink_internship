@@ -1,0 +1,14 @@
+.addPhoto {
+    margin-top: 10px;
+
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    color: #585CC6;
+}
+
+.pencil {
+    margin-right: 12px;
+}

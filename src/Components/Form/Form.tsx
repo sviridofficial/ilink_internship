@@ -23,11 +23,11 @@ import {
     signIn
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 
 const Form: React.FC = () => {
-
+    const link = useNavigate();
     const login = useStore($login);
     const password = useStore($password);
     const isSecretPassword = useStore($isSecretPassword);
@@ -52,7 +52,7 @@ const Form: React.FC = () => {
             for (let i = 0; i < $users.getState().length; i++) {
                 if ($users.getState()[i].login === login.loginState && $users.getState()[i].password === password.passwordState) {
                     findUser = true
-                    window.location.href = '/main'
+                    link("/main")
                     showMessage(false);
                     break;
                 }

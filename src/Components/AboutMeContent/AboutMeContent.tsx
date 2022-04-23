@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
 import styles from "./AboutMeContent.module.css";
 import {ReactComponent as Photo} from "../../Assets/Camera.svg";
 import {ReactComponent as Pencil} from "../../Assets/pencil.svg";
@@ -9,12 +9,15 @@ import {useStore} from "effector-react";
 import {$userStore, changeUserInformation, validateFields} from "../../State/userStore";
 import ErrorEditBlock from "../ErrorEditBlock/ErrorEditBlock";
 import {notificationOpen} from "../../State/notifacationStore";
+import PhotoUpload from "../PhotoUpload/PhotoUpload";
+import photo from "../../Pages/MainPage/Components/MainSection/AboutMe/KonstantinPhoto.jpg";
 
 interface IAboutMeContent {
     setError(value: object): void
 }
 
 const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
+    const inputRef = useRef(null);
     const userData = useStore($userStore);
     const [isEdit, setIsEdit] = useState(false);
     const [firsname, setFirstname] = useState(userData.username);
@@ -51,18 +54,28 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
             setIsEdit(false);
         }
     }
+    const changePhotoClick = () => {
+        // @ts-ignore
+        inputRef.current.click();
+    }
     return (
         <div>
             <h1 className={styles.aboutMeHeaderText}>Обо мне</h1>
             <div className={styles.blockPhoto}>
                 <div className={styles.photoContainer}>
-                    <div className={styles.photo}><Photo/></div>
+                    <img src={photo} className={styles.photo}/>
+                    <div className={styles.hoverPhoto}><img src={photo} className={styles.photo}/></div>
                     <div className={styles.changePhoto}>
                         <h1 className={styles.userPhotoText}>Фото профиля</h1>
-                        <div className={styles.changePhotoText}>
+                        <div className={styles.changePhotoText} onClick={changePhotoClick}>
                             <Pencil className={styles.pencil}/>
+                            <input type='file' id="real-file" hidden={true} ref={inputRef} onChange={(e) => {
+                                // @ts-ignore
+                                console.log(e.target.files[0].name);
+                            }}/>
                             <p>Изменить фото</p>
                         </div>
+
                     </div>
                 </div>
                 <button onClick={() => {
