@@ -5,6 +5,7 @@ import CustomTextarea from "../../Pages/MainPage/Components/Modal/CustomInputFie
 import {editReview} from "../../State/reviewsStore";
 import {Simulate} from "react-dom/test-utils";
 import {fieldRequired, maxLength200} from "../../State/validators/authInputsValidators";
+import {notificationOpen} from "../../State/notifacationStore";
 
 interface IModalEditReview {
     active: boolean,
@@ -22,6 +23,7 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
         } else {
             editReview({id: id, comment: textAreaValue});
             setActive(false);
+            notificationOpen({type: "success", isOpen:true, value: "Отзыв успешно отредактирован!", headerValue:"Отзыв изменен"});
         }
     }
     const cancelClick = () => {
@@ -38,7 +40,8 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
                     <p className="modal_reviews">Редактирование отзыва</p>
                     <img className='cancelImage' src={cancel} onClick={() => {
                         setTextAreaValue(comment);
-                        setActive(false)}}/>
+                        setActive(false)
+                    }}/>
                 </div>
                 <p className={styles.reviewText}>Отзыв</p>
                 <CustomTextarea type={"editReview"} name="comment" value={textAreaValue}

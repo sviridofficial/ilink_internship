@@ -4,9 +4,12 @@ import ControlPanelHeader from "../../Components/ControlPanelHeader/ControlPanel
 import PanelNavbar from "../../Components/PanelNavbar/PanelNavbar";
 import Footer from "../../Components/Footer/Footer";
 import ReviewContent from "../../Components/ReviewContent/ReviewContent";
+import Notification from "../../Components/Notification/Notification";
+import {useStore} from "effector-react";
+import {$notificationIsOpen} from "../../State/notifacationStore";
 
 const Reviews: React.FC = () => {
-
+    const notificationState = useStore($notificationIsOpen);
     return (
         <div className={styles.page}>
             <ControlPanelHeader/>
@@ -14,6 +17,8 @@ const Reviews: React.FC = () => {
                 <PanelNavbar/>
                 <ReviewContent/>
             </div>
+            <Notification type={notificationState.type} state={notificationState.isOpen}
+                          headerValue={notificationState.headerValue} value={notificationState.value}/>
             <Footer/>
         </div>
     )

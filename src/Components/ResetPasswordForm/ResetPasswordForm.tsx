@@ -8,7 +8,7 @@ import {ReactComponent as BackButton} from "../../Assets/back.svg";
 import {Link} from "react-router-dom";
 import Button from "../Button/Button";
 import {emailValidation, fieldRequired} from "../../State/validators/authInputsValidators";
-import {notificationClose, notificationOpen, setNotificationType} from "../../State/notifacationStore";
+import {notificationOpen} from "../../State/notifacationStore";
 
 
 const ResetPasswordForm: React.FC = () => {
@@ -19,11 +19,19 @@ const ResetPasswordForm: React.FC = () => {
     }
     const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
         if (fieldRequired($login.getState().loginState) == true && emailValidation($login.getState().loginState) == true) {
-            setNotificationType("success");
-            notificationOpen();
+            notificationOpen({
+                isOpen: true,
+                type: "success",
+                value: "Код успешно отправлен на вашу почту!",
+                headerValue: "Пароль изменен"
+            })
         } else {
-            setNotificationType("error");
-            notificationOpen();
+            notificationOpen({
+                isOpen: true,
+                type: "error",
+                value: "Не получилось отправить код. Попробуйте еще раз!",
+                headerValue: "Что-то не так..."
+            })
         }
         event.preventDefault();
     }
@@ -34,7 +42,7 @@ const ResetPasswordForm: React.FC = () => {
                 <FormHeader headerText={"Сброс пароля"}/>
                 <div className={styles.backButton}>
                     <Link to={"/"} onClick={() => {
-                        notificationClose();
+                        notificationOpen({isOpen: false, type: "success", value: "", headerValue: ""})
                         clearLogin();
                     }}><BackButton/></Link>
                 </div>
@@ -46,7 +54,7 @@ const ResetPasswordForm: React.FC = () => {
                     <div className={styles.buttons}>
                         <Button label={"Отправить код"} type={"submit"} size={"Big"} isCancel={false}/>
                         <Link onClick={() => {
-                            notificationClose();
+                            notificationOpen({isOpen: false, type: "success", value: "", headerValue: ""})
                             clearLogin()
                         }} className={styles.link} to={"/"}><Button label={"Отмена"}
                                                                     type={"reset"}

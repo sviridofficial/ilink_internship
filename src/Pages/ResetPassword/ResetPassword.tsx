@@ -15,7 +15,8 @@ const ResetPassword: React.FC = () => {
         <div className={styles.page}>
             <Header/>
             <ResetPasswordForm/>
-            <Notification state={notificationState.isOpen} type={notificationState.type}/>
+            <Notification headerValue={notificationState.headerValue} value={notificationState.value}
+                          state={notificationState.isOpen} type={notificationState.type}/>
             <Footer/>
         </div>
     )

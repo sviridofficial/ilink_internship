@@ -8,6 +8,7 @@ import TextareaForm from "../TextareaForm/TextareaForm";
 import {useStore} from "effector-react";
 import {$userStore, changeUserInformation, validateFields} from "../../State/userStore";
 import ErrorEditBlock from "../ErrorEditBlock/ErrorEditBlock";
+import {notificationOpen} from "../../State/notifacationStore";
 
 interface IAboutMeContent {
     setError(value: object): void
@@ -40,6 +41,12 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
             setError({isActive: true, errorMessage: checkErrors})
         } else {
             setError({isActive: false, errorMessage: ""})
+            notificationOpen({
+                isOpen: true,
+                type: "success",
+                headerValue: "Сохранено",
+                value: "Данные успешно отредактированы!"
+            });
             changeUserInformation(newData)
             setIsEdit(false);
         }
