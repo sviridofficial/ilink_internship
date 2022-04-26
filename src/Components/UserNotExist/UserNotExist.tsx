@@ -3,11 +3,15 @@ import styles from "./UserNotExist.module.css"
 import {useStore} from "effector-react";
 import {$messageNotFound} from "../../State/authStore";
 
-const UserNotExist: React.FC = () => {
-    const notFound = useStore($messageNotFound)
+interface IUserNotExists {
+    message: string
+}
+
+const UserNotExist: React.FC<IUserNotExists> = ({message}) => {
+    const notFound = useStore($messageNotFound).state
     return (
         <div className={notFound ? styles.errorBlock : styles.close}>
-            <p>Такого пользователя не существует</p>
+            <p>{message}</p>
         </div>
     )
 }

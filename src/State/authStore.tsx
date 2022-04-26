@@ -1,9 +1,10 @@
-import {createEvent, createStore} from "effector";
+import {createEffect, createEvent, createStore} from "effector";
 import {emailValidation, fieldRequired, passwordValidation} from "./validators/authInputsValidators";
+import {useNavigate} from "react-router-dom";
 
 export const $users = createStore([
     {
-        login: "sviridov_kkk@mail.ru",
+        login: "kostya.sviridov.01@mail.ru",
         password: "SviridovKostya2001!"
     },
     {
@@ -13,8 +14,8 @@ export const $users = createStore([
 
 export const $currentUser = createStore(
     {
-        login: "",
-        password: ""
+        login: "kostya.sviridov.01@mail.ru",
+        password: "Qw2222@@"
     }
 )
 
@@ -38,18 +39,23 @@ const loginInitialState: Ilogin = {
     validatorErrors: []
 }
 
+interface IErrorMessage {
+    state: boolean,
+    message: string
+}
+
 const passwordInitialState: IPassword = {
     passwordState: "",
     validatorErrors: []
 }
 
-export const $messageNotFound = createStore(false);
+export const $messageNotFound = createStore({state: false, message: "Такого пользователя не существует"});
 
 export const $login = createStore(loginInitialState);
 export const $password = createStore(passwordInitialState);
 export const $isSecretPassword = createStore("password");
 
-export const showMessage = createEvent<boolean>();
+export const showMessage = createEvent<IErrorMessage>();
 export const changeLogin = createEvent<string>();
 export const clearLogin = createEvent();
 export const clearPassword = createEvent();
@@ -58,6 +64,23 @@ export const changeSecurityPassword = createEvent();
 export const onSubmitCheckLoginErrors = createEvent<string>();
 export const onSubmitCheckPasswordErrors = createEvent<string>();
 export const signIn = createEvent<IUser>();
+export const $fetchError = createStore<Error | null>(null);
+export const userAuthFx = async () => {
+    const url = "https://academtest.ilink.dev/user/signIn"
+
+    const req = await fetch(url, {
+        headers: {
+            'Content-Type': "application/x-www-form-urlencoded"
+        },
+        method: "POST",
+        body: new URLSearchParams({
+            'email': $login.getState().loginState,
+            'password': $password.getState().passwordState
+        })
+    })
+    return req.json();
+}
+
 
 $login.on(onSubmitCheckLoginErrors, (_, login) => {
     const errors: any[] = [];
@@ -89,7 +112,6 @@ $login.on(changeLogin, (_, login) => {
     if (emailValidation(login) != true) {
         errors.push(emailValidation(login));
     }
-    console.log(errors);
     return {loginState: login, validatorErrors: errors};
 });
 
@@ -109,15 +131,14 @@ $password.on(changePassword, (_, password) => {
     if (passwordValidation(password) != true) {
         errors.push(passwordValidation(password));
     }
-    console.log(errors);
     return {passwordState: password, validatorErrors: errors};
 });
 $isSecretPassword.on(changeSecurityPassword, (_) => {
     return _ === "text" ? "password" : "text";
 })
 
-$messageNotFound.on(showMessage, (_, bool) => {
-    return bool;
+$messageNotFound.on(showMessage, (_, error) => {
+    return error;
 })
 
 $currentUser.on(signIn, (_, data: IUser) => {

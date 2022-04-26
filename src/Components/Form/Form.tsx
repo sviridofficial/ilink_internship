@@ -1,12 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from './Form.module.css';
 import FormHeader from "./FormHeader/FormHeader";
 import FormInput from "./FormInput/FormInput";
 import Button from "../Button/Button";
 import {useStore} from "effector-react";
-
 import {
-    $currentUser,
+    $currentUser, $fetchError,
     $isSecretPassword,
     $login,
     $messageNotFound,
@@ -20,7 +19,7 @@ import {
     onSubmitCheckLoginErrors,
     onSubmitCheckPasswordErrors,
     showMessage,
-    signIn
+    signIn, userAuthFx
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
 import {Link, useLocation, useNavigate} from "react-router-dom";
@@ -30,6 +29,7 @@ const Form: React.FC = () => {
     const link = useNavigate();
     const login = useStore($login);
     const password = useStore($password);
+    const fetcherrors = useStore($fetchError);
     const isSecretPassword = useStore($isSecretPassword);
     const currentUser = useStore($currentUser);
     const changeUsername = (value: string): void => {
@@ -39,28 +39,27 @@ const Form: React.FC = () => {
         changePassword(value);
     }
 
-    const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-        let findUser = false;
+    const handleSubmit = async (event: React.SyntheticEvent<HTMLFormElement>) => {
+        event.preventDefault()
         if (fieldRequired(login.loginState) != true || fieldRequired(password.passwordState) != true) {
             onSubmitCheckLoginErrors(login.loginState);
             onSubmitCheckPasswordErrors(password.passwordState);
-            showMessage(false);
+            showMessage({state: false, message: ""});
         } else if (login.validatorErrors.length > 0 || password.validatorErrors.length > 0) {
-            showMessage(false);
-
+            showMessage({state: false, message: ""});
         } else {
-            for (let i = 0; i < $users.getState().length; i++) {
-                if ($users.getState()[i].login === login.loginState && $users.getState()[i].password === password.passwordState) {
-                    findUser = true
-                    link("/main")
-                    showMessage(false);
-                    break;
-                }
+            let result = await userAuthFx()
+            if (result.statusCode === 400) {
+                showMessage({state: true, message: "Неверный пароль"})
+            } else if (result.statusCode === 500) {
+                showMessage({state: true, message: "Такого пользователя не существует"})
+            } else {
+                showMessage({state: false, message: ""})
+                localStorage.setItem("token", result.accessToken);
+                link("/main")
             }
-
-            if (!findUser) showMessage(true);
         }
-        event.preventDefault()
+
     }
     const clear = (): void => {
         clearLogin();
