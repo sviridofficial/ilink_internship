@@ -5,7 +5,7 @@ import loader from "../../Assets/loader.gif"
 const Loader: React.FC = () => {
     return (
         <div className={styles.loaderblock}>
-            <img src={loader}/>
+            <img className={styles.loader} src={loader}/>
         </div>
     )
 }

@@ -1,5 +1,4 @@
-import {useStore} from "effector-react";
-import {createEvent, createStore} from "effector";
+import {createEffect, createEvent, createStore} from "effector";
 import {compareDates, dateValidation, fieldRequired, usernameValidation} from "./validators/authInputsValidators";
 
 interface IUserStore {
@@ -15,8 +14,8 @@ interface IUserStore {
 
 export const $userStore = createStore<IUserStore>(
     {
-        username: "Константин",
-        lastname: "Свиридов",
+        username: "",
+        lastname: "",
         date: "15.06.2001",
         city: "Кемерово",
         sex: "мужчина",
@@ -27,6 +26,16 @@ export const $userStore = createStore<IUserStore>(
 );
 
 export const changeUserInformation = createEvent<IUserStore>();
+export const getUserInfoFX = createEffect(async () => {
+    const url = "https://academtest.ilink.dev/user/getUserProfile";
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set("authorization", "Bearer" + " " + localStorage.getItem("token"));
+    const req = await fetch(url, {
+        method: "GET",
+        headers: requestHeaders
+    })
+    return req.json();
+});
 
 $userStore.on(changeUserInformation, (_, changedData) => {
     return changedData;
@@ -43,8 +52,18 @@ export const validateFields = (data: IUserStore) => {
         return "Максимальная длина информации о себе 300 символов";
     } else if (dateValidation(data.date) != true) {
         return "Формат даты должен быть дд.мм.гггг";
-    } else if (compareDates(data.date)!=true) {
+    } else if (compareDates(data.date) != true) {
         return "День рождение должен быть больше текущей даты!"
     }
     return true;
+}
+
+export const getYearsOld = (date: Date) => {
+    const currentDate = new Date()
+    let age = currentDate.getFullYear() - date.getFullYear();
+    const m = currentDate.getMonth() - date.getMonth();
+    if (m < 0 || (m === 0 && currentDate.getDate() < date.getDate())) {
+        age--;
+    }
+    return age;
 }
