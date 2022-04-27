@@ -9,7 +9,7 @@ import {notificationOpen} from "../../State/notifacationStore";
 
 interface IModalEditReview {
     active: boolean,
-    id: number,
+    id: string,
     comment: string
 
     setActive(value: boolean): void
@@ -21,7 +21,7 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
         if (maxLength200(textAreaValue) != true || fieldRequired(textAreaValue) != true) {
 
         } else {
-            editReview({id: id, comment: textAreaValue});
+            editReview({id: id, text: textAreaValue});
             setActive(false);
             notificationOpen({type: "success", isOpen:true, value: "Отзыв успешно отредактирован!", headerValue:"Отзыв изменен"});
         }

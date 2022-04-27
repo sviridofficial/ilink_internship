@@ -19,11 +19,13 @@ const ReviewContent: React.FC = () => {
             </div>
         )
     } else {
+
         // @ts-ignore
         reviews = dropDownFiltered(selectedOption, reviews);
-        const allReviews = reviews.map(element => <ReviewBlock id={element.id} username={element.username}
-                                                               date={element.date}
-                                                               comment={element.comment} type={element.type}/>)
+        const allReviews = reviews.map(element => <ReviewBlock id={element.id} username={element.authorName}
+                                                               createdAt={element.createdAt != undefined ? element.createdAt : ""}
+                                                               comment={element.text} type={element.status}
+                                                               authorImage={element.authorImage}/>)
         return (
             <div className={styles.contentBlock}>
                 <div className={styles.contentHeader}>

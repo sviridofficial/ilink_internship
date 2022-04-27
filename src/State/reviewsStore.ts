@@ -1,5 +1,5 @@
-import {createEvent, createStore} from "effector";
-import {fieldRequired, maxLength20, maxLength200, passwordValidation} from "./validators/authInputsValidators";
+import {createEffect, createEvent, createStore} from "effector";
+import {fieldRequired, maxLength20, maxLength200} from "./validators/authInputsValidators";
 
 interface IInputName {
     name: string,
@@ -7,55 +7,25 @@ interface IInputName {
 }
 
 interface IEditComment {
-    id: number,
-    comment: string
+    id: string,
+    text: string
 }
 
 interface IReviewAdd {
-    id: number,
-    username: string,
-    comment: string,
-    date?: string
-    type: "unpublished" | "rejected" | "published"
+    id: string,
+    createdAt?: string,
+    updatedAt?: string,
+    deletedAt?: null | string,
+    version?: number,
+    authorImage: string,
+    authorName: string,
+    title?: string,
+    text: string,
+    status: "onCheck" | "rejected" | "published"
 }
 
 type IReviews = IReviewAdd[] | never[];
-const reviewsInitialState: IReviews = [{
-    id: 1,
-    username: "Константин",
-    date: "15.06.22",
-    comment: "Хороший сайт",
-    type: "published"
-},
-    {
-        id: 2,
-        username: "Виктор",
-        date: "12.06.22",
-        comment: "Нормасс!!!",
-        type: "rejected"
-    },
-    {
-        id: 3,
-        username: "Виктор",
-        date: "12.06.22",
-        comment: "Нормасс!!!",
-        type: "unpublished"
-    },
-    {
-        id: 4,
-        username: "Константин",
-        date: "14.06.22",
-        comment: "Молодец!!!",
-        type: "published"
-    },
-    {
-        id: 5,
-        username: "Михаил",
-        date: "12.06.22",
-        comment: "Прикольненька сайт хороший",
-        type: "unpublished"
-    }
-];
+const reviewsInitialState: IReviews = [];
 
 interface IInputComment {
     comment: string,
@@ -81,10 +51,20 @@ export const $reviewInputComment = createStore(inputCommentInitialState)
 export const changeInputName = createEvent<string>();
 export const changeInputComment = createEvent<string>();
 export const addReview = createEvent<IReviewAdd>();
-export const rejectReview = createEvent<number>();
-export const publishReview = createEvent<number>();
+export const rejectReview = createEvent<string>();
+export const publishReview = createEvent<string>();
 export const editReview = createEvent<IEditComment>();
-
+export const setAllReviews = createEvent<IReviewAdd[]>()
+export const getAllReviewsFx = createEffect(async () => {
+    const url = "https://academtest.ilink.dev/reviews/getAll";
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set("authorization", "Bearer" + " " + localStorage.getItem("token"));
+    const req = await fetch(url, {
+        method: "GET",
+        headers: requestHeaders
+    })
+    return req.json();
+});
 $reviewInputName.on(changeInputName, (_, nameValue) => {
     const errors: any[] = [];
     if (fieldRequired(nameValue) != true) {
@@ -110,13 +90,13 @@ $reviewInputComment.on(changeInputComment, (_, commentValue) => {
 $reviews.on(addReview, (_, review) => {
     const array = [..._];
     const newReview = {
-        id: _.length + 1,
-        username: review.username,
-        comment: review.comment,
-        date: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear(),
-        type: "unpublished"
+        id: (_.length + 1).toString(),
+        authorName: review.authorName,
+        text: review.text,
+        createdAt: new Date().getDate() + "." + (new Date().getMonth() + 1) + "." + new Date().getFullYear(),
+        status: review.status,
+        authorImage: ""
     }
-    // @ts-ignore
     array.unshift(newReview);
     return array;
 })
@@ -124,7 +104,7 @@ $reviews.on(rejectReview, (_, id) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === id) {
-            array[i].type = "rejected";
+            array[i].status = "rejected";
         }
     }
 
@@ -135,7 +115,7 @@ $reviews.on(publishReview, (_, id) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === id) {
-            array[i].type = "published";
+            array[i].status = "published";
         }
     }
     return array;
@@ -146,30 +126,34 @@ $reviews.on(editReview, (_, element) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === element.id) {
-            array[i].comment = element.comment;
+            array[i].text = element.text;
         }
     }
 
     return array;
 })
-export const filterPublishReviews = (array: { date: string; comment: string; id: number; type: string; username: string }[]) => {
-    return array.filter(element => element.type === "published"
+
+$reviews.on(setAllReviews, (_, data) => {
+    return data;
+})
+export const filterPublishReviews = (array: IReviewAdd[]) => {
+    return array.filter(element => element.status === "published"
     )
 }
 
-export const filterRejectedReviews = (array: { date: string; comment: string; id: number; type: string; username: string }[]) => {
-    return array.filter(element => element.type === "rejected"
+export const filterRejectedReviews = (array: IReviewAdd[]) => {
+    return array.filter(element => element.status === "rejected"
     )
 }
 
-export const filterUnpublishedReviews = (array: { date: string; comment: string; id: number; type: string; username: string }[]) => {
-    return array.filter(element => element.type === "unpublished"
+export const filterUnpublishedReviews = (array: IReviewAdd[]) => {
+    return array.filter(element => element.status === "onCheck"
     )
 }
 
-export const dropDownFiltered = (dropdawnValue: string, array: ({ date: string; comment: string; id: number; type: string; username: string } | { date: string; comment: string; id: number; type: string; username: string } | { date: string; comment: string; id: number; type: string; username: string } | { date: string; comment: string; id: number; type: string; username: string })[]) => {
+export const dropDownFiltered = (dropdawnValue: string, array: IReviewAdd[]) => {
     let result = [];
-    if (dropdawnValue === "unpublished") {
+    if (dropdawnValue === "onCheck") {
         result.push(...filterUnpublishedReviews(array));
         result.push(...filterRejectedReviews(array));
         result.push(...filterPublishReviews(array));
