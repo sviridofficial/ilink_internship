@@ -29,7 +29,8 @@ const AboutMe = () => {
                     pet: result.hasPet ? "есть" : "нет",
                     sex: result.gender === "male" ? "мужчина" : "женщина",
                     city: result.cityOfResidence,
-                    shortInformation: ""
+                    shortInformation: "",
+                    imagePath: "https://academtest.ilink.dev/images/" + result.profileImage
                 })
             }
         }
@@ -45,7 +46,9 @@ const AboutMe = () => {
     } else {
         return (
             <div className='aboutMe'>
-                <div className='photo'></div>
+                <div className='photo'>
+                    <img className={"usersPhoto"} src={userData.imagePath}/>
+                </div>
                 <div className='information'>
                     <div className='informationTop'>
                         <div className='myFullName'>

@@ -10,6 +10,7 @@ interface IUserStore {
     pet: string,
     shortInformation: string,
     aboutMe: string,
+    imagePath: string
 }
 
 export const $userStore = createStore<IUserStore>(
@@ -22,6 +23,7 @@ export const $userStore = createStore<IUserStore>(
         pet: "нет",
         shortInformation: "Только рыба с закрытым ртом никогда не попадется на крючок",
         aboutMe: "Всем привет! Меня зовут Константин, мне 20 лет, я студент Томского Политехнического Университета. Учусь на направлении \"Программная инженерия\", в свободное от учёбы время создаю веб-приложения. Недавно я создал сайт для Томской компании.",
+        imagePath: ""
     }
 );
 

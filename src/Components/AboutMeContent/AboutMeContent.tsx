@@ -37,7 +37,8 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
             sex: sex,
             pet: pet,
             shortInformation: shortInformation,
-            aboutMe: aboutMe
+            aboutMe: aboutMe,
+            imagePath: ""
         }
         const checkErrors = validateFields(newData);
         if (checkErrors !== true) {
