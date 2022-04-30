@@ -9,18 +9,17 @@ import info from './Info Square.svg'
 import reset from "../../../../Assets/reset.svg";
 import {useStore} from "effector-react";
 import {$reviewInputComment, $reviewInputName, addReview} from "../../../../State/reviewsStore";
-import Notification from "../../../../Components/Notification/Notification";
 import {
     $notificationIsOpen,
-    notificationClose,
-    notificationOpen,
-    setNotificationType
+    notificationOpen
 } from "../../../../State/notifacationStore";
 import CapthaInput from "../../../../Components/CapthaInput/CapthaInput";
+import {$login, $password} from "../../../../State/authStore";
 
 const Modal = (props) => {
     const [captchaImage, setCaptchaImage] = useState("");
     const [captchaValue, setCaptchaValue] = useState("");
+    const [captchaKey, setCaptchaKey] = useState("")
     const [span, setSpan] = useState(null);
     const deleteImg = () => {
         setSpan(false);
@@ -28,29 +27,80 @@ const Modal = (props) => {
     const name = useStore($reviewInputName);
     const comment = useStore($reviewInputComment);
     const notification = useStore($notificationIsOpen);
-    const onSubmit = (event) => {
-        if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0) || name.name.length == 0 || comment.comment.length == 0) {
-            setNotificationType("errorReview")
-            notificationOpen();
-        } else {
-            addReview({username: name.name, comment: comment.comment});
-            props.setActive(false);
-            setNotificationType("successReview")
-            notificationOpen();
-        }
+    const onSubmit = async (event) => {
         event.preventDefault();
+        if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0) || name.name.length == 0 || comment.comment.length == 0) {
+            notificationOpen({
+                isOpen: true,
+                type: "error",
+                value: "Ошибка валидации!",
+                headerValue: "Что-то пошло не так..."
+            });
+        } else {
+            const url = "https://academtest.ilink.dev/reviews/create";
+            const request = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                body: new URLSearchParams({
+                    'authorName': name.name,
+                    'title': "wd",
+                    "text": comment.comment,
+                    'captchaKey': captchaKey,
+                    "captchaValue": captchaValue
+                })
+            }).then(response => {
+                if (response.status < 400) {
+                    props.setActive(false);
+                    notificationOpen({
+                        isOpen: true,
+                        type: "success",
+                        value: "Успешно",
+                        headerValue: "Отзыв отправлен!"
+                    })
+                } else {
+                    response.json().then(data => {
+                        notificationOpen({
+                            isOpen: true,
+                            type: "error",
+                            value: data.response.message,
+                            headerValue: "Ошибка данных..."
+                        })
+                        props.setActive(false)
+                    })
+                }
+            })
+        }
     }
+
+    const resetCaptcha = () => {
+        const request = async () => {
+            const url = "https://academtest.ilink.dev/reviews/getCaptcha";
+            const req = await fetch(url, {
+                method: "GET"
+            }).then(response => response.json().then(data => {
+                setCaptchaImage(data.base64Image);
+                setCaptchaKey(data.key)
+            }))
+        }
+        request();
+
+    }
+
     useEffect(() => {
         const request = async () => {
             const url = "https://academtest.ilink.dev/reviews/getCaptcha";
             const req = await fetch(url, {
                 method: "GET"
-            }).then(response => response.json().then(data => setCaptchaImage(data.base64Image)))
+            }).then(response => response.json().then(data => {
+                setCaptchaImage(data.base64Image)
+                setCaptchaKey(data.key)
+            }))
         }
         request();
 
     }, [])
-    console.log(captchaValue)
     return (
         <div className={props.active ? "modal active" : "modal"} onClick={() => {
             props.setActive(false)
@@ -100,7 +150,7 @@ const Modal = (props) => {
                             </div>
                             <div className={"captchaX"}>
                                 <img className={"captchaImage"} src={captchaImage}/>
-                                <div className={"resetCaptchaBlock"}>
+                                <div onClick={resetCaptcha} className={"resetCaptchaBlock"}>
                                     <img src={reset}/>
                                 </div>
                             </div>
@@ -120,6 +170,4 @@ const Modal = (props) => {
     )
 
 }
-
-
 export default Modal;

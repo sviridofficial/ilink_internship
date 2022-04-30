@@ -12,7 +12,8 @@ import Loader from "../../../../../Components/Loader/Loader";
 
 const Reviews = (props) => {
     let slider = React.createRef();
-    let comments = filterPublishReviews(useStore($reviews));
+    let reviews = useStore($reviews);
+    let comments = filterPublishReviews(reviews);
     const [modalActive, setModalActive] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     let settings = {
@@ -71,8 +72,11 @@ const Reviews = (props) => {
     useEffect(() => {
         const request = async () => {
             const result = await getAllReviewsFx();
-            setAllReviews(result);
-            setIsLoading(false);
+
+            if (result.statusCode != 401) {
+                setAllReviews(result);
+                setIsLoading(false)
+            }
         }
         request()
     }, [])

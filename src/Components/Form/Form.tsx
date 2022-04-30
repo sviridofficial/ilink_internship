@@ -29,9 +29,7 @@ const Form: React.FC = () => {
     const link = useNavigate();
     const login = useStore($login);
     const password = useStore($password);
-    const fetcherrors = useStore($fetchError);
     const isSecretPassword = useStore($isSecretPassword);
-    const currentUser = useStore($currentUser);
     const changeUsername = (value: string): void => {
         changeLogin(value);
     }

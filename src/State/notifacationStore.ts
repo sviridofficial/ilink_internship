@@ -14,7 +14,7 @@ export const $notificationIsOpen = createStore({
     value: ""
 });
 export const notificationOpen = createEvent<INotificaionData>();
-export const setNotificationType = createEvent<string>();
+
 
 $notificationIsOpen.on(notificationOpen, (_, notificationData) => {
     return notificationData;
