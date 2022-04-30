@@ -20,7 +20,7 @@ const ReviewContent: React.FC = () => {
         )
     } else {
 
-        // @ts-ignore
+        
         reviews = dropDownFiltered(selectedOption, reviews);
         const allReviews = reviews.map(element => <ReviewBlock id={element.id} username={element.authorName}
                                                                createdAt={element.createdAt != undefined ? element.createdAt : ""}

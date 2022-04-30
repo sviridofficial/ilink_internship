@@ -1,7 +1,7 @@
 .countSymbols {
     position: absolute;
     right: 28px;
-    bottom: 120px;
+    bottom: 230px;
     font-family: 'Gilroy-Bold';
     font-style: normal;
     font-weight: 400;
@@ -27,7 +27,7 @@
 .symbolsError {
     position: absolute;
     right: 28px;
-    bottom: 120px;
+    bottom: 220px;
     font-family: 'Gilroy-Bold';
     font-style: normal;
     font-weight: 400;
@@ -50,7 +50,7 @@
 
 @media (max-width: 768px) {
     .symbolsError {
-        bottom: 105px;
+        bottom: 280px;
         right: 20px;
     }
 
@@ -60,5 +60,9 @@
 
     .symbolsError2 {
         bottom: 180px;
+    }
+
+    .countSymbols {
+        bottom: 290px;
     }
 }

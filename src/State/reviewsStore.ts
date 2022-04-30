@@ -121,7 +121,7 @@ $reviews.on(publishReview, (_, id) => {
     return array;
 })
 
-// @ts-ignore
+
 $reviews.on(editReview, (_, element) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {

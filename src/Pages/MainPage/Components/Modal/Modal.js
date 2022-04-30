@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Modal.css';
 import cancel from './cancel.svg';
 import CustomTextarea from "./CustomInputField/CustomTextarea";
@@ -6,6 +6,7 @@ import FileInput from "./FileInputCustom/FileInput";
 import CustomInput from "./CustomInputField/СustomInput";
 import jpgIcon from './jpgIcon.svg';
 import info from './Info Square.svg'
+import reset from "../../../../Assets/reset.svg";
 import {useStore} from "effector-react";
 import {$reviewInputComment, $reviewInputName, addReview} from "../../../../State/reviewsStore";
 import Notification from "../../../../Components/Notification/Notification";
@@ -15,9 +16,11 @@ import {
     notificationOpen,
     setNotificationType
 } from "../../../../State/notifacationStore";
+import CapthaInput from "../../../../Components/CapthaInput/CapthaInput";
 
 const Modal = (props) => {
-
+    const [captchaImage, setCaptchaImage] = useState("");
+    const [captchaValue, setCaptchaValue] = useState("");
     const [span, setSpan] = useState(null);
     const deleteImg = () => {
         setSpan(false);
@@ -26,7 +29,7 @@ const Modal = (props) => {
     const comment = useStore($reviewInputComment);
     const notification = useStore($notificationIsOpen);
     const onSubmit = (event) => {
-        if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0)||name.name.length==0||comment.comment.length==0) {
+        if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0) || name.name.length == 0 || comment.comment.length == 0) {
             setNotificationType("errorReview")
             notificationOpen();
         } else {
@@ -37,7 +40,17 @@ const Modal = (props) => {
         }
         event.preventDefault();
     }
+    useEffect(() => {
+        const request = async () => {
+            const url = "https://academtest.ilink.dev/reviews/getCaptcha";
+            const req = await fetch(url, {
+                method: "GET"
+            }).then(response => response.json().then(data => setCaptchaImage(data.base64Image)))
+        }
+        request();
 
+    }, [])
+    console.log(captchaValue)
     return (
         <div className={props.active ? "modal active" : "modal"} onClick={() => {
             props.setActive(false)
@@ -78,6 +91,21 @@ const Modal = (props) => {
                     <p className="everythingLike">Все ли вам понравилось?</p>
                     <CustomTextarea name="comment"
                                     placeholder={'Напишите пару слов о вашем опыте...'}></CustomTextarea>
+                    <div className={"capthaBlock"}>
+
+                        <div className={"captcha"}>
+                            <div>
+                                <p>Введите код с картинки:</p>
+                                <CapthaInput value={captchaValue} setValue={setCaptchaValue}/>
+                            </div>
+                            <div className={"captchaX"}>
+                                <img className={"captchaImage"} src={captchaImage}/>
+                                <div className={"resetCaptchaBlock"}>
+                                    <img src={reset}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className='footerModal'>
                         <button type={"submit"} className="sendButton">Отправить отзыв</button>
                         <div className='fMod'>

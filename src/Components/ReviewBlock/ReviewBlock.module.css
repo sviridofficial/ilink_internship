@@ -1,5 +1,7 @@
 .reviewBlock {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #F5F5F5;
     border-radius: 2px;
     padding: 24px;
@@ -8,6 +10,9 @@
 }
 
 .reviewBlockRejected {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #FDEEEE;
     border-radius: 2px;
     padding: 24px;
@@ -21,6 +26,9 @@
 }
 
 .reviewBlockPublished {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: rgba(181, 255, 162, 0.1);
     border-radius: 2px;
     padding: 24px;

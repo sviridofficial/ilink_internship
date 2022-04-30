@@ -1,0 +1,24 @@
+.nameInput {
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    border-radius: 2px;
+    outline: none;
+    width: 383px;
+    height: 52px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 15px 12px;
+}
+
+.nameInput::placeholder {
+    color: #8A8A8A;
+}
+
+@media (max-width: 768px) {
+    .nameInput {
+        width: 256px
+    }
+}

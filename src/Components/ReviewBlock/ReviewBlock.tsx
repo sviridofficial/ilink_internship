@@ -30,19 +30,21 @@ const ReviewBlock: React.FC<IReviewProps> = ({id, username, createdAt, comment, 
     return (
         <div
             className={type === "rejected" ? styles.reviewBlockRejected : type === "published" ? styles.reviewBlockPublished : styles.reviewBlock}>
-            <div className={styles.reviewHeader}>
-                <div className={styles.reviewHeaderUserInformation}>
-                    <div className={styles.photo}>
-                        {authorImage != null ? <img className={styles.userPhoto}
-                                                    src={"https://academtest.ilink.dev/images/" + authorImage}/>
-                            : <div className={styles.photoUserNull}><EmptyPhoto/></div>}
+            <div>
+                <div className={styles.reviewHeader}>
+                    <div className={styles.reviewHeaderUserInformation}>
+                        <div className={styles.photo}>
+                            {authorImage != null ? <img className={styles.userPhoto}
+                                                        src={"https://academtest.ilink.dev/images/" + authorImage}/>
+                                : <div className={styles.photoUserNull}><EmptyPhoto/></div>}
 
+                        </div>
+                        <p className={styles.userName}>{username}</p>
                     </div>
-                    <p className={styles.userName}>{username}</p>
+                    <p className={styles.date}>{new Date(createdAt).getDate() + "." + (new Date(createdAt).getMonth() + 1) + "." + new Date(createdAt).getFullYear()}</p>
                 </div>
-                <p className={styles.date}>{new Date(createdAt).getDate() + "." + (new Date(createdAt).getMonth() + 1) + "." + new Date(createdAt).getFullYear()}</p>
+                <p className={styles.comment}>{comment}</p>
             </div>
-            <p className={styles.comment}>{comment}</p>
             {type === "rejected" ?
                 <div className={styles.rejected}>
                     <RejectedLogo/>
