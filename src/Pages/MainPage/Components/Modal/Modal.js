@@ -16,19 +16,19 @@ import {
 import CapthaInput from "../../../../Components/CapthaInput/CapthaInput";
 import {$login, $password} from "../../../../State/authStore";
 import Loader from "../../../../Components/Loader/Loader";
+import {updatePhoto} from "../../../../State/api";
 
 const Modal = (props) => {
     const [loading, setLoading] = useState(false);
     const [captchaImage, setCaptchaImage] = useState("");
     const [captchaValue, setCaptchaValue] = useState("");
     const [captchaKey, setCaptchaKey] = useState("")
-    const [span, setSpan] = useState(null);
+    const [span, setSpan] = useState([]);
     const deleteImg = () => {
-        setSpan(false);
+        setSpan([]);
     }
     const name = useStore($reviewInputName);
     const comment = useStore($reviewInputComment);
-    const notification = useStore($notificationIsOpen);
     const onSubmit = async (event) => {
         event.preventDefault();
         if ((name.validatorErrors.length != 0 || comment.validatorErrors.length != 0) || name.name.length == 0 || comment.comment.length == 0) {
@@ -55,14 +55,53 @@ const Modal = (props) => {
                 })
             }).then(response => {
                 if (response.status < 400) {
-                    props.setActive(false);
-                    notificationOpen({
-                        isOpen: true,
-                        type: "success",
-                        value: "Успешно",
-                        headerValue: "Отзыв отправлен!"
+                    response.json().then(async data => {
+                        const id = data.id;
+                        debugger;
+                        if (span.length === 0) {
+                            props.setActive(false);
+                            notificationOpen({
+                                isOpen: true,
+                                type: "success",
+                                value: "Успешно",
+                                headerValue: "Отзыв отправлен!"
+                            })
+                            setLoading(false)
+                        } else {
+
+                            const urlString = `https://academtest.ilink.dev/reviews/updatePhoto/${id}`;
+                            const data = new FormData()
+                            data.append("authorImage", span[0]);
+                            const request = await fetch(urlString, {
+                                method: "POST",
+                                body: data
+                            }).then(response => {
+                                if (response.status >= 200 && response.status < 300) {
+                                    setLoading(false);
+                                    props.setActive(false);
+                                    notificationOpen({
+                                        isOpen: true,
+                                        type: "success",
+                                        value: "Успешно",
+                                        headerValue: "Отзыв отправлен!"
+                                    })
+                                } else {
+                                    setLoading(false)
+                                    props.setActive(false);
+                                    notificationOpen({
+                                        isOpen: true,
+                                        type: "error",
+                                        value: "Ошибка",
+                                        headerValue: "Фотография не добавилась к отзыву..."
+                                    })
+                                }
+                            })
+
+
+                        }
+
                     })
-                    setLoading(false)
+
                 } else {
                     response.json().then(data => {
                         notificationOpen({
@@ -90,7 +129,6 @@ const Modal = (props) => {
             }))
         }
         request();
-
     }
 
     useEffect(() => {
@@ -106,7 +144,7 @@ const Modal = (props) => {
         request();
 
     }, [])
-    debugger;
+
     if (!loading) {
         return (
             <div className={props.active ? "modal active" : "modal"} onClick={() => {
@@ -125,11 +163,11 @@ const Modal = (props) => {
                             <FileInput span={span} setSpan={setSpan}/>
                         </div>
 
-                        {span ?
+                        {span.length > 0 ?
                             <div className="file">
                                 <img src={jpgIcon}/>
                                 <div className="fileOutput">
-                                    <span id="custom-text">{span}</span>
+                                    <span id="custom-text">{span[0].name}</span>
                                     <div className="straight"></div>
                                 </div>
                                 <svg onClick={deleteImg} id="deleteImage" width="20" height="20" viewBox="0 0 20 20"

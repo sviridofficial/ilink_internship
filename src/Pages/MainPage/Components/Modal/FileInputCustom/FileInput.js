@@ -6,9 +6,7 @@ const FileInput = (props) => {
     const inputRef = useRef(null);
     const buttonRef = useRef();
     const onFileChange = (e) => {
-        props.setSpan(e.target.files[0].name);
-        console.log(e.target.files[0].name);
-
+        props.setSpan([e.target.files[0]]);
     }
 
     const buttonClick = () => {
