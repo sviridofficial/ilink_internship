@@ -6,6 +6,7 @@ import {useStore} from "effector-react";
 import {$userStore, changeUserInformation, getUserInfoFX, getYearsOld} from "../../../../../State/userStore";
 import Loader from "../../../../../Components/Loader/Loader";
 import {useNavigate} from "react-router-dom";
+import {getUserInfo} from "../../../../../State/api";
 
 const AboutMe = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,7 @@ const AboutMe = () => {
     const auth = useNavigate();
     useEffect(() => {
         const request = async () => {
-            const result = await getUserInfoFX();
+            const result = await getUserInfo();
             setIsLoading(false);
             if (result.statusCode === 401) {
                 auth("/");

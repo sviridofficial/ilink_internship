@@ -65,21 +65,7 @@ export const onSubmitCheckLoginErrors = createEvent<string>();
 export const onSubmitCheckPasswordErrors = createEvent<string>();
 export const signIn = createEvent<IUser>();
 export const $fetchError = createStore<Error | null>(null);
-export const userAuthFx = async () => {
-    const url = "https://academtest.ilink.dev/user/signIn"
 
-    const req = await fetch(url, {
-        headers: {
-            'Content-Type': "application/x-www-form-urlencoded"
-        },
-        method: "POST",
-        body: new URLSearchParams({
-            'email': $login.getState().loginState,
-            'password': $password.getState().passwordState
-        })
-    })
-    return req.json();
-}
 
 
 $login.on(onSubmitCheckLoginErrors, (_, login) => {

@@ -10,13 +10,11 @@ import reset from "../../../../Assets/reset.svg";
 import {useStore} from "effector-react";
 import {$reviewInputComment, $reviewInputName, addReview} from "../../../../State/reviewsStore";
 import {
-    $notificationIsOpen,
     notificationOpen
 } from "../../../../State/notifacationStore";
 import CapthaInput from "../../../../Components/CapthaInput/CapthaInput";
-import {$login, $password} from "../../../../State/authStore";
 import Loader from "../../../../Components/Loader/Loader";
-import {updatePhoto} from "../../../../State/api";
+import {createReview, getCaptcha, updatePhoto} from "../../../../State/api";
 
 const Modal = (props) => {
     const [loading, setLoading] = useState(false);
@@ -40,20 +38,7 @@ const Modal = (props) => {
             });
         } else {
             setLoading(true)
-            const url = "https://academtest.ilink.dev/reviews/create";
-            const request = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': "application/x-www-form-urlencoded"
-                },
-                body: new URLSearchParams({
-                    'authorName': name.name,
-                    'title': "wd",
-                    "text": comment.comment,
-                    'captchaKey': captchaKey,
-                    "captchaValue": captchaValue
-                })
-            }).then(response => {
+            createReview(name.name, comment.comment, captchaKey, captchaValue).then(response => {
                 if (response.status < 400) {
                     response.json().then(async data => {
                         const id = data.id;
@@ -68,14 +53,7 @@ const Modal = (props) => {
                             })
                             setLoading(false)
                         } else {
-
-                            const urlString = `https://academtest.ilink.dev/reviews/updatePhoto/${id}`;
-                            const data = new FormData()
-                            data.append("authorImage", span[0]);
-                            const request = await fetch(urlString, {
-                                method: "POST",
-                                body: data
-                            }).then(response => {
+                            updatePhoto(id, span).then(response => {
                                 if (response.status >= 200 && response.status < 300) {
                                     setLoading(false);
                                     props.setActive(false);
@@ -120,10 +98,7 @@ const Modal = (props) => {
 
     const resetCaptcha = () => {
         const request = async () => {
-            const url = "https://academtest.ilink.dev/reviews/getCaptcha";
-            const req = await fetch(url, {
-                method: "GET"
-            }).then(response => response.json().then(data => {
+            getCaptcha().then(response => response.json().then(data => {
                 setCaptchaImage(data.base64Image);
                 setCaptchaKey(data.key)
             }))
@@ -133,10 +108,7 @@ const Modal = (props) => {
 
     useEffect(() => {
         const request = async () => {
-            const url = "https://academtest.ilink.dev/reviews/getCaptcha";
-            const req = await fetch(url, {
-                method: "GET"
-            }).then(response => response.json().then(data => {
+            getCaptcha().then(response => response.json().then(data => {
                 setCaptchaImage(data.base64Image)
                 setCaptchaKey(data.key)
             }))

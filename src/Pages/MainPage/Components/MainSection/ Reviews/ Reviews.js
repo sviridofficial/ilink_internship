@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import './Reviews.css';
 import Slider from "react-slick";
 import left from './left.svg';
@@ -6,8 +6,9 @@ import right from './right.svg';
 import plus from './plus.svg';
 import Modal from "../../Modal/Modal";
 import {useStore} from "effector-react";
-import {$reviews, filterPublishReviews, getAllReviewsFx, setAllReviews} from "../../../../../State/reviewsStore";
+import {$reviews, filterPublishReviews, setAllReviews} from "../../../../../State/reviewsStore";
 import Loader from "../../../../../Components/Loader/Loader";
+import {getAllReviews} from "../../../../../State/api";
 
 
 const Reviews = (props) => {
@@ -71,7 +72,7 @@ const Reviews = (props) => {
 
     useEffect(() => {
         const request = async () => {
-            const result = await getAllReviewsFx();
+            const result = await getAllReviews();
 
             if (result.statusCode != 401) {
                 setAllReviews(result);

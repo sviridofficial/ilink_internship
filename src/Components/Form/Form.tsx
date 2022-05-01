@@ -19,10 +19,11 @@ import {
     onSubmitCheckLoginErrors,
     onSubmitCheckPasswordErrors,
     showMessage,
-    signIn, userAuthFx
+    signIn
 } from "../../State/authStore";
 import {fieldRequired} from "../../State/validators/authInputsValidators";
 import {Link, useLocation, useNavigate} from "react-router-dom";
+import {userAuthFx} from "../../State/api";
 
 
 const Form: React.FC = () => {
