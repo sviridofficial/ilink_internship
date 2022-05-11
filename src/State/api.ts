@@ -100,3 +100,18 @@ export const editReviews = async (reviewId: string, updatedText: string) => {
     })
     return req;
 }
+
+export const changeReviewState = async (reviewId: string, status: string) => {
+    const url = `https://academtest.ilink.dev/reviews/updateStatus/${reviewId}`
+    const req = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: new URLSearchParams({
+            "status": status
+        })
+    })
+    return req;
+}

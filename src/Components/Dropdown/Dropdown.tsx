@@ -26,9 +26,9 @@ const Dropdown: React.FC<IDropdawnProps> = ({selected, setSelect, type}) => {
                 setSelect(e.target.value)
             }
             } name={"select"} value={selected} className={styles.studentsList}>
-                <option value={"unpublished"}>Сначала неопубликованные</option>
-                <option value={"rejected"}>Сначала отклоненные</option>
-                <option value={"published"}>Сначала опубликованные</option>
+                <option value={"onCheck"}>Сначала неопубликованные</option>
+                <option value={"declined"}>Сначала отклоненные</option>
+                <option value={"approved"}>Сначала опубликованные</option>
             </select>
         )
     }

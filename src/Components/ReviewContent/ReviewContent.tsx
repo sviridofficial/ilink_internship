@@ -13,7 +13,7 @@ const ReviewContent: React.FC = () => {
     let reviews = useStore($reviews);
     const navigation = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [selectedOption, setSelectedOption] = useState("unpublished");
+    const [selectedOption, setSelectedOption] = useState("onCheck");
 
     useEffect(() => {
         const request = async () => {

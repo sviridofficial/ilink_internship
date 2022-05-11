@@ -157,7 +157,7 @@ export const dropDownFiltered = (dropdawnValue: string, array: IReviewAdd[]) => 
         result.push(...filterUnpublishedReviews(array));
         result.push(...filterRejectedReviews(array));
         result.push(...filterPublishReviews(array));
-    } else if (dropdawnValue === "published") {
+    } else if (dropdawnValue === "approved") {
         result.push(...filterPublishReviews(array));
         result.push(...filterUnpublishedReviews(array));
         result.push(...filterRejectedReviews(array));
