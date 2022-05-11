@@ -6,6 +6,8 @@ import {editReview} from "../../State/reviewsStore";
 import {Simulate} from "react-dom/test-utils";
 import {fieldRequired, maxLength200} from "../../State/validators/authInputsValidators";
 import {notificationOpen} from "../../State/notifacationStore";
+import {editReviews} from "../../State/api";
+import Loader from "../Loader/Loader";
 
 interface IModalEditReview {
     active: boolean,
@@ -17,19 +19,42 @@ interface IModalEditReview {
 
 const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, comment}) => {
     const [textAreaValue, setTextAreaValue] = useState(comment);
-    const submitEdit = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const submitEdit = async () => {
+        setIsLoading(true);
         if (maxLength200(textAreaValue) != true || fieldRequired(textAreaValue) != true) {
 
         } else {
-            editReview({id: id, text: textAreaValue});
-            setActive(false);
-            notificationOpen({type: "success", isOpen:true, value: "Отзыв успешно отредактирован!", headerValue:"Отзыв изменен"});
+            const request = await editReviews(id, textAreaValue).then(response => {
+                if (response.ok) {
+                    editReview({id: id, text: textAreaValue});
+                    setActive(false);
+                    notificationOpen({
+                        type: "success",
+                        isOpen: true,
+                        value: "Отзыв успешно отредактирован!",
+                        headerValue: "Отзыв изменен"
+                    });
+                } else {
+                    setActive(false);
+                    notificationOpen({
+                        type: "error",
+                        isOpen: true,
+                        headerValue: "Ошибка!",
+                        value: "Не получилось изменить отзыв..."
+                    });
+                }
+            })
+
+
+            setIsLoading(false)
         }
     }
     const cancelClick = () => {
         setTextAreaValue(comment);
         setActive(false)
     }
+
     return (
         <div className={active ? styles.modal + " " + styles.active : styles.modal} onClick={() => {
             setActive(false)
@@ -44,13 +69,16 @@ const ModalEditReview: React.FC<IModalEditReview> = ({active, setActive, id, com
                     }}/>
                 </div>
                 <p className={styles.reviewText}>Отзыв</p>
-                <CustomTextarea type={"editReview"} name="comment" value={textAreaValue}
-                                setValue={setTextAreaValue}
-                                placeholder={'Напишите пару слов о вашем опыте...'}></CustomTextarea>
-                <div className={styles.buttons}>
-                    <button onClick={submitEdit} className={styles.submit}>Подтвердить редактирование</button>
-                    <button onClick={cancelClick} className={styles.refuse}>Отмена</button>
-                </div>
+                {isLoading ? <Loader/> : <div>
+                    <CustomTextarea type={"editReview"} name="comment" value={textAreaValue}
+                                    setValue={setTextAreaValue}
+                                    placeholder={'Напишите пару слов о вашем опыте...'}></CustomTextarea>
+                    <div className={styles.buttons}>
+                        <button onClick={submitEdit} className={styles.submit}>Подтвердить редактирование</button>
+                        <button onClick={cancelClick} className={styles.refuse}>Отмена</button>
+                    </div>
+                </div>}
+
             </div>
         </div>
     )

@@ -85,3 +85,18 @@ export const getAllUsers = async () => {
     })
     return req;
 }
+
+export const editReviews = async (reviewId: string, updatedText: string) => {
+    const url = `https://academtest.ilink.dev/reviews/updateInfo/${reviewId}`
+    const req = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: new URLSearchParams({
+            text: updatedText
+        })
+    })
+    return req;
+}
