@@ -13,6 +13,12 @@ interface IUserStore {
     imagePath: string
 }
 
+interface headerData {
+    username: string,
+    lastname: string,
+    image: string
+}
+
 export const $userStore = createStore<IUserStore>(
     {
         username: "",
@@ -28,6 +34,7 @@ export const $userStore = createStore<IUserStore>(
 );
 
 export const changeUserInformation = createEvent<IUserStore>();
+export const changeHeader = createEvent<headerData>();
 export const getUserInfoFX = createEffect(async () => {
     const url = "https://academtest.ilink.dev/user/getUserProfile";
     const requestHeaders: HeadersInit = new Headers();
@@ -38,7 +45,9 @@ export const getUserInfoFX = createEffect(async () => {
     })
     return req.json();
 });
-
+$userStore.on(changeHeader, (_, data) => {
+    return {..._, imagePath: data.image, lastname: data.lastname, username: data.username};
+})
 $userStore.on(changeUserInformation, (_, changedData) => {
     return changedData;
 })

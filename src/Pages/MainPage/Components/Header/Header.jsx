@@ -4,14 +4,16 @@ import logo from './headerPhoto.png';
 import vector from './Vector.svg'
 import academy from './ACADEMY.svg';
 import {Link} from "react-router-dom";
+import {$userStore} from "../../../../State/userStore";
+import {useStore} from "effector-react";
 
 const Header = (props) => {
+    const userData = useStore($userStore);
     return (
         <div className="header">
             <div className="headerInfo">
-                <img className="headerPhoto" src={logo} width='52' height='52'/>
-                <p className='myName'>Константин Свиридов</p>
-                <h1 className='myLastName'>Константин</h1>
+                <img className="headerPhoto" src={userData.imagePath} width='52' height='52'/>
+                <p className='myName'>{userData.username + " " + userData.lastname}</p>
             </div>
 
             <div className='companyLogo'>
