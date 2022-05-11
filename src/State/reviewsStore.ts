@@ -21,7 +21,7 @@ interface IReviewAdd {
     authorName: string,
     title?: string,
     text: string,
-    status: "onCheck" | "rejected" | "published"
+    status: "onCheck" | "declined" | "approved"
 }
 
 type IReviews = IReviewAdd[] | never[];
@@ -104,7 +104,7 @@ $reviews.on(rejectReview, (_, id) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === id) {
-            array[i].status = "rejected";
+            array[i].status = "declined";
         }
     }
 
@@ -115,7 +115,7 @@ $reviews.on(publishReview, (_, id) => {
     const array = [..._];
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === id) {
-            array[i].status = "published";
+            array[i].status = "approved";
         }
     }
     return array;
@@ -137,12 +137,12 @@ $reviews.on(setAllReviews, (_, data) => {
     return data;
 })
 export const filterPublishReviews = (array: IReviewAdd[]) => {
-    return array.filter(element => element.status === "published"
+    return array.filter(element => element.status === "approved"
     )
 }
 
 export const filterRejectedReviews = (array: IReviewAdd[]) => {
-    return array.filter(element => element.status === "rejected"
+    return array.filter(element => element.status === "declined"
     )
 }
 

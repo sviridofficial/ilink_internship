@@ -29,7 +29,7 @@ const ReviewBlock: React.FC<IReviewProps> = ({id, username, createdAt, comment, 
     }
     return (
         <div
-            className={type === "rejected" ? styles.reviewBlockRejected : type === "published" ? styles.reviewBlockPublished : styles.reviewBlock}>
+            className={type === "declined" ? styles.reviewBlockRejected : type === "approved" ? styles.reviewBlockPublished : styles.reviewBlock}>
             <div>
                 <div className={styles.reviewHeader}>
                     <div className={styles.reviewHeaderUserInformation}>
@@ -45,11 +45,11 @@ const ReviewBlock: React.FC<IReviewProps> = ({id, username, createdAt, comment, 
                 </div>
                 <p className={styles.comment}>{comment}</p>
             </div>
-            {type === "rejected" ?
+            {type === "declined" ?
                 <div className={styles.rejected}>
                     <RejectedLogo/>
                     <p className={styles.rejectedText}>Отзыв отклонен</p>
-                </div> : type === "published" ?
+                </div> : type === "approved" ?
                     <div className={styles.published}>
                         <PublishedLogo/>
                         <p className={styles.publishedText}>Отзыв опубликован</p>

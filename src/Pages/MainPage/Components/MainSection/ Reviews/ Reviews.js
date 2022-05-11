@@ -9,6 +9,7 @@ import {useStore} from "effector-react";
 import {$reviews, filterPublishReviews, setAllReviews} from "../../../../../State/reviewsStore";
 import Loader from "../../../../../Components/Loader/Loader";
 import {getAllReviews} from "../../../../../State/api";
+import {ReactComponent as EmptyPhoto} from "../../../../../Assets/Camera.svg";
 
 
 const Reviews = (props) => {
@@ -59,10 +60,16 @@ const Reviews = (props) => {
         <div className='reviwContainer'>
             <div className='containerHeader'>
                 <div className="x">
-                    <div className='userPhoto'/>
+                    <div className={"tableUserPhoto2"}>
+                        {c.authorImage != null ? <img className={"userPhoto2"}
+                                                      src={"https://academtest.ilink.dev/images/" + c.authorImage}/>
+
+                            : <div className={"photoUserNull"}><EmptyPhoto/></div>}
+
+                    </div>
                     <p className='userName'>{c.authorName}</p>
                 </div>
-                <p className='postAdded'>{c.createdAt}</p>
+                <p className='postAdded'>{new Date(c.createdAt).getDate() + "." + (new Date(c.createdAt).getMonth() + 1) + "." + new Date(c.createdAt).getFullYear()}</p>
             </div>
             <div className="comment">
                 <p>{c.text}</p>

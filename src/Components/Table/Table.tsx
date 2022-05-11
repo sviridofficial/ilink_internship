@@ -27,7 +27,7 @@ const Items: React.FC<Props> = ({currentItems}) => {
                 <td>
                     <div className={"userBlock"}>
                         <div className={"tableUserPhoto"}>
-                            {element.profileImage != null ? <img className={"userPhoto"}
+                            {element.profileImage != null ? <img className={"userPhoto2"}
                                                                  src={element.profileImage}/>
                                 : <div className={"photoUserNull"}><EmptyPhoto/></div>}
 
