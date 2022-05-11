@@ -4,6 +4,8 @@ import Status from "../Status/Status";
 import {useStore} from "effector-react";
 import {$students, filter, listMembers, membersStore} from "../../State/membersStore";
 import ReactPaginate from "react-paginate";
+import styles from "../ReviewBlock/ReviewBlock.module.css";
+import {ReactComponent as EmptyPhoto} from "../../Assets/Camera.svg";
 
 
 interface ITable {
@@ -24,11 +26,16 @@ const Items: React.FC<Props> = ({currentItems}) => {
             <tr>
                 <td>
                     <div className={"userBlock"}>
-                        <div className={"tableUserPhoto"}></div>
+                        <div className={"tableUserPhoto"}>
+                            {element.profileImage != null ? <img className={"userPhoto"}
+                                                                 src={element.profileImage}/>
+                                : <div className={"photoUserNull"}><EmptyPhoto/></div>}
+
+                        </div>
                         <p className={"userNameTable"}>{element.studentName}</p>
                     </div>
                 </td>
-                <td>{element.studentDescription}</td>
+                <td>{element.smallAboutMe}</td>
                 <td><Status value={element.studentStatus}/></td>
             </tr>
         ))

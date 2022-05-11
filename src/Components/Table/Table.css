@@ -9,9 +9,11 @@
     border-collapse: collapse;
     width: 100%;
 }
-.table{
+
+.table {
     position: relative;
 }
+
 .userNameTable {
     font-family: 'Gilroy';
     font-style: normal;
@@ -38,7 +40,7 @@
 }
 
 .tableUserPhoto {
-    background-color: gray;
+    background-color: white;
     width: 40px;
     height: 40px;
     margin-right: 12px;
@@ -46,6 +48,19 @@
 
 #customers tr:hover {
     background-color: #ddd;
+}
+
+.userPhoto {
+    width: 100%;
+    height: 100%;
+}
+
+.photoUserNull {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .userBlock {
@@ -84,7 +99,7 @@
     margin-top: 50px;
     width: 100%;
     gap: 8px;
-   padding-bottom: 147px;
+    padding-bottom: 147px;
 }
 
 .breakClassName {

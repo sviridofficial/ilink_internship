@@ -2,13 +2,13 @@ import React from "react";
 import styles from "./Status.module.css";
 
 export interface IStatusProps {
-    value: "Обучается"|"Закончил"|"Отчислен"
+    value: "studies" | "Закончил" | "Отчислен"
 }
 
 const Status: React.FC<IStatusProps> = ({value}) => {
     return (
-        <div className={value==="Отчислен"?styles.status: value==="Обучается"?styles.start:styles.end}>
-            <p>{value}</p>
+        <div className={value === "Отчислен" ? styles.status : value === "studies" ? styles.start : styles.end}>
+            <p>{value==="studies"? "Обучается":"Отчислен"}</p>
         </div>
     )
 }

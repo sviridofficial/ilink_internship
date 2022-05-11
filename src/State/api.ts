@@ -74,3 +74,14 @@ export const getCaptcha = async () => {
     })
     return req;
 }
+
+export const getAllUsers = async () => {
+    const url = "https://academtest.ilink.dev/user/getAll"
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set("authorization", "Bearer" + " " + localStorage.getItem("token"));
+    const req = await fetch(url, {
+        method: "GET",
+        headers: requestHeaders
+    })
+    return req;
+}
