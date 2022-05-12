@@ -28,8 +28,8 @@ const DropdownForm: React.FC<IDropdownForm> = ({fieldName, type, value, setValue
             <div>
                 <p className={styles.dropdownName}>{fieldName}</p>
                 <select disabled={!isEdit} value={value} onChange={(event) => setValue(event.target.value)} className={styles.dropdown}>
-                    <option value={"мужчина"}>Мужчина</option>
-                    <option value={"женщина"}>Женщина</option>
+                    <option value={"Мужчина"}>Мужчина</option>
+                    <option value={"Женщина"}>Женщина</option>
                 </select>
             </div>
         )
@@ -38,8 +38,8 @@ const DropdownForm: React.FC<IDropdownForm> = ({fieldName, type, value, setValue
             <div>
                 <p className={styles.dropdownName}>{fieldName}</p>
                 <select disabled={!isEdit} value={value} onChange={(event) => setValue(event.target.value)} className={styles.dropdown}>
-                    <option value={"есть"}>Есть</option>
-                    <option value={"нет"}>Нет</option>
+                    <option value={"Есть"}>Есть</option>
+                    <option value={"Нет"}>Нет</option>
                 </select>
             </div>
         )

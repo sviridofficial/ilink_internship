@@ -6,12 +6,9 @@ import FormInput from "../FormInput/FormInput";
 import DropdownForm from "../DropdownForm/DropdownForm";
 import TextareaForm from "../TextareaForm/TextareaForm";
 import {useStore} from "effector-react";
-import {$userStore, changePhoto, changeUserInformation, getYearsOld, validateFields} from "../../State/userStore";
-import ErrorEditBlock from "../ErrorEditBlock/ErrorEditBlock";
+import {$userStore, changePhoto, changeUserInformation, validateFields} from "../../State/userStore";
 import {notificationOpen} from "../../State/notifacationStore";
-import PhotoUpload from "../PhotoUpload/PhotoUpload";
-import photo from "../../Pages/MainPage/Components/MainSection/AboutMe/KonstantinPhoto.jpg";
-import {getUserInfo, updateUserPhoto} from "../../State/api";
+import {editUserData, getUserInfo, updateUserPhoto} from "../../State/api";
 import {useNavigate} from "react-router-dom";
 import Loader from "../Loader/Loader";
 
@@ -36,7 +33,12 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
     const [image, setImage] = useState("");
 
 
-    const saveData = () => {
+    const saveData = async () => {
+        setIsLoading(true);
+        const dateParts = date.split(".");
+        const dateObject = new Date(+dateParts[2], parseInt(dateParts[1]) - 1, +dateParts[0]).toString();
+        console.log(dateObject)
+        console.log()
         const newData = {
             username: firsname,
             lastname: lastname,
@@ -46,7 +48,7 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
             pet: pet,
             shortInformation: shortInformation,
             aboutMe: aboutMe,
-            imagePath: ""
+            imagePath: userData.imagePath
         }
         const checkErrors = validateFields(newData);
 
@@ -54,15 +56,31 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
             setError({isActive: true, errorMessage: checkErrors})
         } else {
             setError({isActive: false, errorMessage: ""})
-            notificationOpen({
-                isOpen: true,
-                type: "success",
-                headerValue: "Сохранено",
-                value: "Данные успешно отредактированы!"
-            });
-            changeUserInformation(newData)
-            setIsEdit(false);
+            const request = await editUserData(firsname, lastname, dateObject, city, sex === "женщина" ? "female" : "male", pet === "Есть" ? true : false, shortInformation, aboutMe).then(
+                response => {
+                    if (response.ok) {
+                        notificationOpen({
+                            isOpen: true,
+                            type: "success",
+                            headerValue: "Сохранено",
+                            value: "Данные успешно отредактированы!"
+                        });
+
+                        changeUserInformation(newData)
+                        setIsEdit(false);
+                    } else {
+                        notificationOpen({
+                            isOpen: true,
+                            type: "error",
+                            headerValue: "Ошибка",
+                            value: "Данные не отредактированы!"
+                        });
+                    }
+                }
+            )
+
         }
+        setIsLoading(false);
     }
     const changePhotoClick = () => {
         // @ts-ignore

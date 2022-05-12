@@ -127,3 +127,28 @@ export const updateUserPhoto = async (span: File) => {
     })
     return request;
 }
+
+export const editUserData = async (firstName: string, lastName: string, birthDate: string,
+                                   cityOfResidence: string, gender: string, hasPet: boolean,
+                                   smallAboutMe: string | null, aboutMe: string) => {
+    const urlString = "https://academtest.ilink.dev/user/updateInfo";
+    const request = await fetch(urlString, {
+        method: "POST",
+        headers: {
+            "authorization": `Bearer ${localStorage.getItem("token")}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            birthDate: birthDate,
+            cityOfResidence: cityOfResidence,
+            gender: gender,
+            hasPet: hasPet,
+            smallAboutMe: smallAboutMe,
+            aboutMe: aboutMe
+        })
+    })
+    return request;
+
+}
