@@ -80,6 +80,14 @@
     margin-right: 12px;
 }
 
+.pencil:hover {
+    cursor: pointer;
+}
+
+.changePhotoTitle:hover {
+    cursor: pointer;
+}
+
 .editButton {
     border-radius: 2px;
     background-color: #585CC6;

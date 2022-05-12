@@ -24,7 +24,6 @@ const ControlPanelHeader: React.FC = () => {
         }
         getData();
     }, [])
-
     return (
         <header className={styles.header}>
             <div className={styles.block}>

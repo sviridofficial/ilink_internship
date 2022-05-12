@@ -115,3 +115,15 @@ export const changeReviewState = async (reviewId: string, status: string) => {
     })
     return req;
 }
+
+export const updateUserPhoto = async (span: File) => {
+    const urlString = `https://academtest.ilink.dev/user/updatePhoto`;
+    const data = new FormData()
+    data.append("profileImage", span);
+    const request = await fetch(urlString, {
+        method: "POST",
+        headers: {"authorization": `Bearer ${localStorage.getItem("token")}`},
+        body: data
+    })
+    return request;
+}

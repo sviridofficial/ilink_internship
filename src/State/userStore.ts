@@ -35,6 +35,7 @@ export const $userStore = createStore<IUserStore>(
 
 export const changeUserInformation = createEvent<IUserStore>();
 export const changeHeader = createEvent<headerData>();
+export const changePhoto = createEvent<string>();
 export const getUserInfoFX = createEffect(async () => {
     const url = "https://academtest.ilink.dev/user/getUserProfile";
     const requestHeaders: HeadersInit = new Headers();
@@ -51,7 +52,9 @@ $userStore.on(changeHeader, (_, data) => {
 $userStore.on(changeUserInformation, (_, changedData) => {
     return changedData;
 })
-
+$userStore.on(changePhoto, (_, photoPath) => {
+    return {..._, imagePath: photoPath}
+})
 export const validateFields = (data: IUserStore) => {
     if (fieldRequired(data.username) != true || fieldRequired(data.lastname) != true || fieldRequired(data.date) != true || fieldRequired(data.aboutMe) != true) {
         return "Имеются незаполненные поля!";

@@ -6,12 +6,12 @@ import FormInput from "../FormInput/FormInput";
 import DropdownForm from "../DropdownForm/DropdownForm";
 import TextareaForm from "../TextareaForm/TextareaForm";
 import {useStore} from "effector-react";
-import {$userStore, changeUserInformation, getYearsOld, validateFields} from "../../State/userStore";
+import {$userStore, changePhoto, changeUserInformation, getYearsOld, validateFields} from "../../State/userStore";
 import ErrorEditBlock from "../ErrorEditBlock/ErrorEditBlock";
 import {notificationOpen} from "../../State/notifacationStore";
 import PhotoUpload from "../PhotoUpload/PhotoUpload";
 import photo from "../../Pages/MainPage/Components/MainSection/AboutMe/KonstantinPhoto.jpg";
-import {getUserInfo} from "../../State/api";
+import {getUserInfo, updateUserPhoto} from "../../State/api";
 import {useNavigate} from "react-router-dom";
 import Loader from "../Loader/Loader";
 
@@ -34,6 +34,7 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
     const [shortInformation, setShortInformation] = useState(userData.shortInformation);
     const [aboutMe, setAboutMe] = useState(userData.aboutMe);
     const [image, setImage] = useState("");
+
 
     const saveData = () => {
         const newData = {
@@ -66,6 +67,34 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
     const changePhotoClick = () => {
         // @ts-ignore
         inputRef.current.click();
+    }
+    const updatePhoto = async (file: File) => {
+        console.log(file)
+        if (file.size > 1024 * 1024 * 5) {
+            setError({isActive: true, errorMessage: "Файл больше 5 МБайт..."})
+        } else if (!/\.(jpe?g|png)$/i.test(file.name)) {
+            setError({isActive: true, errorMessage: "Разрешеные форматы фотографий jpeg и png..."})
+        } else {
+            setIsLoading(true);
+            const request = updateUserPhoto(file).then(response => {
+                if (response.ok) {
+                    response.json().then(result => {
+                        changePhoto("https://academtest.ilink.dev/images/" + result.profileImage)
+                        setImage("https://academtest.ilink.dev/images/" + result.profileImage)
+                        notificationOpen({
+                            isOpen: true,
+                            type: "success",
+                            headerValue: "Успешно!",
+                            value: "Фотография успешно обновлена..."
+                        })
+                        setError({isActive: false, errorMessage: ""});
+                    })
+                } else {
+                    setError({isActive: true, errorMessage: "Не удалось обновить фотографию!"})
+                }
+                setIsLoading(false);
+            });
+        }
     }
     useEffect(() => {
         const request = async () => {
@@ -103,9 +132,9 @@ const AboutMeContent: React.FC<IAboutMeContent> = ({setError}) => {
                                     <Pencil className={styles.pencil}/>
                                     <input type='file' id="real-file" hidden={true} ref={inputRef} onChange={(e) => {
                                         // @ts-ignore
-                                        console.log(e.target.files[0].name);
+                                        updatePhoto(e.target.files[0]);
                                     }}/>
-                                    <p>Изменить фото</p>
+                                    <p className={styles.changePhotoTitle}>Изменить фото</p>
                                 </div>
 
                             </div>
